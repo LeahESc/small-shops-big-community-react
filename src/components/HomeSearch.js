@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TagCheckbox from './TagCheckbox'
 
 export default class HomeSearch extends Component {
     state = {
@@ -11,15 +12,15 @@ export default class HomeSearch extends Component {
         ]
     }
 
-    handleChange = () => {
+    handleChange = (e) => {
 
     }
 
-    handleSubmit = () =>{
+    handleSubmit = (e) =>{
 
     }
 
-    handleValueChange = () => {
+    handleCheck = (e) => {
 
     }
 
@@ -31,8 +32,8 @@ export default class HomeSearch extends Component {
                   
                         <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="plant shops..."/>
                         <button type="submit" >Search</button> 
-
-                        <div className="checkbox">
+                        {this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} onChange={this.handleCheck} /> )}
+                        {/* <div className="checkbox">
                             <label>
                                 <input
                                 type="checkbox"
@@ -40,7 +41,7 @@ export default class HomeSearch extends Component {
                                 checked={this.state.selectedOption === "BIPOC-OWNED"}
                                 onChange={this.onValueChange}
                                 /> BIPOC-OWNED
-                            </label>
+                            </label> */}
                         </div>
                         <div className="checkbox">
                             <label>
