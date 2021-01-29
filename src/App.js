@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 import HomeSearch from './components/HomeSearch'
+import CategoryContainer from './containers/CategoryContainer'
+import fetchShops from './actions/categoryActions'
 
 function App() {
   return (
@@ -13,9 +15,10 @@ function App() {
         <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
         <HomeSearch />
         </header>
+        <CategoryContainer />
     </div>
   );
 }
 
 
-export default connect()(App);
+export default connect(null, {  fetchShops } )(App);

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { fetchShops } from '../actions/categoryActions'
 import TagCheckbox from './TagCheckbox'
+import CategoryContainer from '../containers/CategoryContainer'
 
-export default class HomeSearch extends Component {
+
+class HomeSearch extends Component {
+   
+
     state = {
         category: '',
         tags: [
@@ -13,6 +17,7 @@ export default class HomeSearch extends Component {
         ]
     }
 
+
     handleChange = (e) => {
         this.setState({
             ...this.state,
@@ -22,9 +27,19 @@ export default class HomeSearch extends Component {
     }
 
     handleSubmit = (e) => {
+        const initialTags = [
+            {id: 1, value:"BIPOC-OWNED", checked: false},
+            {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
+            {id: 3, value:"LGBTQ+-OWNED", checked: false},
+            {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
+        ]
         e.preventDefault()
-        fetchShops(this.state.category
-
+        fetchShops(this.state.category)
+        this.setState({ 
+            category: '',
+            tags: initialTags,
+        })
+        
     }
 
     handleCheck = (e) => {
@@ -57,3 +72,5 @@ export default class HomeSearch extends Component {
         )
     }
 }
+
+export default HomeSearch
