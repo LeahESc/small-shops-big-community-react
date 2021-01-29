@@ -13,6 +13,10 @@ export default class HomeSearch extends Component {
     }
 
     handleChange = (e) => {
+        this.setState({
+            ...this.state,
+            category: e.target.value
+        })
 
     }
 
@@ -21,19 +25,20 @@ export default class HomeSearch extends Component {
     }
 
     handleCheck = (e) => {
-        const { name } = e.target;
         console.log("finding the tag", e, this.state )
-        this.setState({
+        const { name } = e.target;
+        
+        // this.setState({
             
-            ...this.state,
-            tags: [
-            ...this.state.tags.map(tag => {
-                if (tag.value === "name") {
-                    return {checked: true}
-                }
-            // this is not quite right, how do i access the checkbox to change it's checked value????
-            })]
-        })
+        //     ...this.state,
+        //     tags: [
+        //     ...this.state.tags.map(tag => {
+        //         if (tag.value === "name") {
+        //             return {checked: true}
+        //         }
+        //     // this is not quite right, how do i access the checkbox to change it's checked value????
+        //     })]
+        // })
     };
     
     render() {
