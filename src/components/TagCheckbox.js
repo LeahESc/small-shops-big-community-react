@@ -1,13 +1,20 @@
 import React from 'react'
 
-const TagCheckbox = ({props}) => { 
+const TagCheckbox = ({value, checked, handleCheck}) => { 
     return ( 
         <div>
-             <label>{value}</label>
-            <input type="checkbox"  value={value} checked={checked} onChange={handleCheck}/>
+             <label>
+                 <input 
+                    type="checkbox"
+                    name={value}
+                    checked={checked}
+                    onChange={handleCheck}
+                    className="form-check-input" 
+                    />
+                    {value}</label>
         </div>
     )
 
 }
 
-export default TagCheckboxes
+export default TagCheckbox

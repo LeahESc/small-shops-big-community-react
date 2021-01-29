@@ -21,9 +21,20 @@ export default class HomeSearch extends Component {
     }
 
     handleCheck = (e) => {
-
-    }
-
+        const { name } = e.target;
+        console.log("finding the tag", e, this.state )
+        this.setState({
+            
+            ...this.state,
+            tags: [
+            ...this.state.tags.map(tag => {
+                if (tag.value === "name") {
+                    return {checked: true}
+                }
+            // this is not quite right, how do i access the checkbox to change it's checked value????
+            })]
+        })
+    };
     
     render() {
         return (
@@ -42,7 +53,7 @@ export default class HomeSearch extends Component {
                                 onChange={this.onValueChange}
                                 /> BIPOC-OWNED
                             </label> */}
-                        </div>
+                        {/* </div>
                         <div className="checkbox">
                             <label>
                                 <input
@@ -72,7 +83,7 @@ export default class HomeSearch extends Component {
                                 onChange={this.handleValueChange}
                                 /> COMMITMENT TO SOCIAL IMPACT
                             </label>
-                        </div>
+                        </div> */}
                     
                    
                 </form>
