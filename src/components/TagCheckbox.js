@@ -11,10 +11,10 @@ const TagCheckbox = ({value, checked, handleCheck}) => {
                     onChange={handleCheck}
                     className="form-check-input" 
                     />
-                    {value}</label>
+                    {value}
+                </label>
         </div>
     )
-
 }
 
 export default TagCheckbox

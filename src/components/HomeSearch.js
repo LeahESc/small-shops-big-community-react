@@ -40,52 +40,10 @@ export default class HomeSearch extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                  
-                        <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="plant shops..."/>
-                        <button type="submit" >Search</button> 
-                        {this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} onChange={this.handleCheck} /> )}
-                        {/* <div className="checkbox">
-                            <label>
-                                <input
-                                type="checkbox"
-                                value={"BIPOC-OWNED"}
-                                checked={this.state.selectedOption === "BIPOC-OWNED"}
-                                onChange={this.onValueChange}
-                                /> BIPOC-OWNED
-                            </label> */}
-                        {/* </div>
-                        <div className="checkbox">
-                            <label>
-                                <input
-                                type="checkbox"
-                                value="WOMEN/WOMXN-OWNED"
-                                checked={this.state.selectedOption === "WOMEN/WOMXN-OWNED"}
-                                onChange={this.handleValueChange}
-                                /> WOMEN/WOMXN-OWNED
-                            </label>
-                        </div>
-                        <div className="checkbox">
-                            <label>
-                                <input
-                                type="checkbox"
-                                value="LGBTQ+-OWNED"
-                                checked={this.state.selectedOption === "LGBTQ+-OWNED"}
-                                onChange={this.handleValueChange}
-                                /> LGBTQ+-OWNED
-                            </label>
-                        </div>
-                        <div className="checkbox">
-                            <label>
-                                <input
-                                type="checkbox"
-                                value="COMMITMENT TO SOCIAL IMPACT"
-                                checked={this.state.selectedOption === "COMMITMENT TO SOCIAL IMPACT"}
-                                onChange={this.handleValueChange}
-                                /> COMMITMENT TO SOCIAL IMPACT
-                            </label>
-                        </div> */}
-                    
-                   
+                    <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="try 'plant shops'"/>
+                    <button type="submit" >Search</button> 
+                    {this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )}
+                
                 </form>
             </div>
         )
