@@ -6,7 +6,7 @@ import HomeSearch from './components/HomeSearch'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h1>SMALL SHOPS</h1>
         <h2>BIG COMMUNITY!</h2>
