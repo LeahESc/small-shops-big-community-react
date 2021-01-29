@@ -25,21 +25,25 @@ export default class HomeSearch extends Component {
     }
 
     handleCheck = (e) => {
-        console.log("finding the tag", e, this.state )
-        const { name } = e.target;
-        
-        // this.setState({
+        console.log("finding the tag", e.target, )
+        const name = e.target.name;
+        this.setState({
             
-        //     ...this.state,
-        //     tags: [
-        //     ...this.state.tags.map(tag => {
-        //         if (tag.value === "name") {
-        //             return {checked: true}
-        //         }
-        //     // this is not quite right, how do i access the checkbox to change it's checked value????
-        //     })]
-        // })
+            ...this.state,
+            tags: [
+            ...this.state.tags.map(tag => {
+                if (tag.value === name ) {
+                    return {...tag, checked: true}
+                } else {
+                    return tag
+                }
+            })]
+        })
+        console.log(this.state)
+        console.log(this.state.tags)
     };
+
+    createTagCheckboxes = () =>  this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )
     
     render() {
         return (
@@ -47,8 +51,7 @@ export default class HomeSearch extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="try 'plant shops'"/>
                     <button type="submit" >Search</button> 
-                    {this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )}
-                
+                    {this.createTagCheckboxes()}
                 </form>
             </div>
         )

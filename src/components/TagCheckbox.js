@@ -7,6 +7,7 @@ const TagCheckbox = ({value, checked, handleCheck}) => {
                  <input 
                     type="checkbox"
                     name={value}
+                    value = {value}
                     checked={checked}
                     onChange={handleCheck}
                     className="form-check-input" 
