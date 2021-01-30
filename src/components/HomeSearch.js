@@ -41,19 +41,18 @@ class HomeSearch extends Component {
     };
 
     selectedTags = () => { 
-        this.state.tags.map(tag => tag.checked === true ? tag : '')
+        this.state.tags.filter(tag => tag.checked === true)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log("state.category:", this.state.category)
         const initialTags = [
             {id: 1, value:"BIPOC-OWNED", checked: false},
             {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
             {id: 3, value:"LGBTQ+-OWNED", checked: false},
             {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
         ]
-        this.props.fetchShops(this.state.category)
+        this.props.fetchShops(this.state)
         this.setState({ 
             category: '',
             tags: initialTags,
