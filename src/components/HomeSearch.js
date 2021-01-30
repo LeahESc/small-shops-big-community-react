@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TagCheckbox from './TagCheckbox'
-import CategoryContainer from '../containers/CategoryContainer'
+import ShopsContainer from '../containers/ShopsContainer'
 
 
 class HomeSearch extends Component {
@@ -60,13 +60,13 @@ class HomeSearch extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="try 'plant shops'"/>
-                    <button type="submit" >Search</button> 
+                    <button type="submit">Search</button> 
                     {this.createTagCheckboxes()}
                 </form>
-                <CategoryContainer category={this.state.category} selectedTags={this.state.tags.filter(tag => tag.checked === true)} />
+                < ShopsContainer />
             </div>
         )
     }
 }
 
-export default (HomeSearch)
+export default HomeSearch;

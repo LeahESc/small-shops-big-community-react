@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import './App.css';
-import { connect } from 'react-redux'
 import HomeSearch from './components/HomeSearch'
 import { connect } from 'react-redux'
-import fetchShops from '../actions/categoryActions'
+import fetchShops from './actions/categoryActions'
 
 class App extends Component {
   
@@ -24,7 +23,7 @@ class App extends Component {
 }
 
 
-export default connect(mapStateToProps,{ fetchShops })(App);
+export default connect(null,{ fetchShops })(App);
  
 
 
