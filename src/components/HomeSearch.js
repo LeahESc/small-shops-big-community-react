@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import TagCheckbox from './TagCheckbox'
 import CategoryContainer from '../containers/CategoryContainer'
-import { connect } from 'react-redux'
-import fetchShops from '../actions/categoryActions'
+
 
 class HomeSearch extends Component {
     state = {
@@ -40,9 +39,6 @@ class HomeSearch extends Component {
         })
     };
 
-    selectedTags = () => { 
-        this.state.tags.filter(tag => tag.checked === true)
-    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -67,16 +63,10 @@ class HomeSearch extends Component {
                     <button type="submit" >Search</button> 
                     {this.createTagCheckboxes()}
                 </form>
-                <CategoryContainer shops={this.props.shops} selectedTags={this.selectedTags} />
+                <CategoryContainer category={this.state.category} selectedTags={this.state.tags.filter(tag => tag.checked === true)} />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => { 
-    return {
-      shops: state.shops
-    }
-  }
-
-export default connect(mapStateToProps,{ fetchShops })(HomeSearch)
+export default (HomeSearch)

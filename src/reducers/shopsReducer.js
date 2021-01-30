@@ -9,12 +9,13 @@ const shopsReducer = (state= {shops: [], loading: false}, action) => {
         case 'SHOPS_LOADED':
             console.log(action)
             const tagOptions = action.tags 
+            // this works for now, but needs to check if tagOptions[0] event exists
             const shops = action.shops.filter(s => { 
                             if (s.tags.some(t => t.id === tagOptions[0].id)) {
                                 return s 
                             } 
                         })
-            console.log("filtered shops:", shops)
+            // console.log("filtered shops:", shops)
             return {
                 ...state,
                 shops: shops,

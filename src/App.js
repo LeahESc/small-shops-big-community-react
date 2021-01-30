@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import './App.css';
 import { connect } from 'react-redux'
 import HomeSearch from './components/HomeSearch'
-
+import { connect } from 'react-redux'
+import fetchShops from '../actions/categoryActions'
 
 class App extends Component {
   
-  // createCategoryContainer = () => {
-  //   this.props.shops ? <CategoryContainer /> : nil 
-  // }
-
+  
   render() { 
     return (
       <div className="App">
@@ -18,7 +16,7 @@ class App extends Component {
           <h1>SMALL SHOPS</h1>
           <h2>BIG COMMUNITY!</h2>
           <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-          <HomeSearch />
+          <HomeSearch fetchShops={this.props.fetchShops}/>
           </header>
       </div>
     )
@@ -26,7 +24,7 @@ class App extends Component {
 }
 
 
-export default App;
+export default connect(mapStateToProps,{ fetchShops })(App);
  
 
 
