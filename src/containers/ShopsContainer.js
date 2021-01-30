@@ -4,12 +4,13 @@ import { connect } from 'react-redux'
 
 class ShopsContainer extends Component {
     render() {   
-        console.log("sc props:", this.props)  
+        console.log("sc props:", this.props.shops)  
         const shops = this.props.shops 
-        const category = shops.find(s => s.category.name)  
+        const category = shops.length > 0 ? shops[0].category.name : ""
         return (
             <div>
-                {/* {category} */}
+                {category}
+                <Shops shops={this.props.shops} />
             </div>
         )
     }
