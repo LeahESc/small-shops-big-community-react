@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import TagCheckbox from './TagCheckbox'
 import CategoryContainer from '../containers/CategoryContainer'
 import { connect } from 'react-redux'
-import fetchShops from './actions/categoryActions'
+import fetchShops from '../actions/categoryActions'
 
 class HomeSearch extends Component {
-   
-
     state = {
         category: '',
         tags: [
@@ -16,7 +14,6 @@ class HomeSearch extends Component {
             {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
         ]
     }
-
 
     handleChange = (e) => {
         this.setState({
@@ -44,7 +41,7 @@ class HomeSearch extends Component {
     };
 
     selectedTags = () => { 
-        this.state.tags.map(tag => tag.checked === true ? tag : nil)
+        this.state.tags.map(tag => tag.checked === true ? tag : '')
     }
 
     handleSubmit = (e) => {
@@ -83,4 +80,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps, { fetchShops })(HomeSearch)
+export default connect(mapStateToProps,{ fetchShops })(HomeSearch)
