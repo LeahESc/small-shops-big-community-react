@@ -1,5 +1,6 @@
 export const fetchShops = (c) => {
-    c.split('')
+    console.log("about to load", c.split(' '))
+    c.split(' ')
     return (dispatch) => {
         dispatch({ type: 'LOADING_SHOPS' })
         fetch('http://localhost:3001/shops')

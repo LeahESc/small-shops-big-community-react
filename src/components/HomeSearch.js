@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { fetchShops } from '../actions/categoryActions'
 import TagCheckbox from './TagCheckbox'
 import CategoryContainer from '../containers/CategoryContainer'
-
+import { connect } from 'react-redux'
+import fetchShops from './actions/categoryActions'
 
 class HomeSearch extends Component {
    
@@ -26,24 +26,9 @@ class HomeSearch extends Component {
 
     }
 
-    handleSubmit = (e) => {
-        const initialTags = [
-            {id: 1, value:"BIPOC-OWNED", checked: false},
-            {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
-            {id: 3, value:"LGBTQ+-OWNED", checked: false},
-            {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
-        ]
-        e.preventDefault()
-        fetchShops(this.state.category)
-        this.setState({ 
-            category: '',
-            tags: initialTags,
-        })
-        
-    }
-
+    createTagCheckboxes = () =>  this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )
+    
     handleCheck = (e) => {
-        console.log("finding the tag", e.target, )
         const name = e.target.name;
         this.setState({  
             ...this.state,
@@ -58,7 +43,25 @@ class HomeSearch extends Component {
         })
     };
 
-    createTagCheckboxes = () =>  this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )
+    selectedTags = () => { 
+        this.state.tags.map(tag => tag.checked === true ? tag : nil)
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("state.category:", this.state.category)
+        const initialTags = [
+            {id: 1, value:"BIPOC-OWNED", checked: false},
+            {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
+            {id: 3, value:"LGBTQ+-OWNED", checked: false},
+            {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
+        ]
+        this.props.fetchShops(this.state.category)
+        this.setState({ 
+            category: '',
+            tags: initialTags,
+        })   
+    }  
     
     render() {
         return (
@@ -68,9 +71,16 @@ class HomeSearch extends Component {
                     <button type="submit" >Search</button> 
                     {this.createTagCheckboxes()}
                 </form>
+                <CategoryContainer shops={this.props.shops} selectedTags={this.selectedTags} />
             </div>
         )
     }
 }
 
-export default HomeSearch
+const mapStateToProps = state => { 
+    return {
+      shops: state.shops
+    }
+  }
+
+export default connect(mapStateToProps, { fetchShops })(HomeSearch)
