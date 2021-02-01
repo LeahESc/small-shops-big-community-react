@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import '../App.css'
 import TagCheckbox from './TagCheckbox'
-import ShopsContainer from '../containers/ShopsContainer'
-
+import CategoryContainer from '../containers/CategoryContainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class HomeSearch extends Component {
     state = {
@@ -49,21 +51,34 @@ class HomeSearch extends Component {
             {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
         ]
         this.props.fetchShops(this.state)
-        this.setState({ 
-            category: '',
-            tags: initialTags,
-        })   
+        // this.setState({ 
+        //     category: '',
+        //     tags: initialTags,
+        // })   
     }  
     
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <header className="header">
+                {/* <img src={logo} className="App-logo" alt="logo" /> */}
+                    <h1>SMALL SHOPS</h1>
+                    <h2>BIG COMMUNITY!</h2>
+                    <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
+                
+                <form >
                     <input type ="text" name="category" onChange={this.handleChange} value={this.state.category} placeholder="try 'plant shops'"/>
-                    <button type="submit">Search</button> 
+                    <Link to='/categories/:id/shops' onClick={this.handleSubmit} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)}> 
+                        <button >Search</button> 
+                    </Link>
                     {this.createTagCheckboxes()}
                 </form>
-                < ShopsContainer />
+                </header>
+                <Router> 
+                    <Route exact path='/categories/:id/shops' componend={CategoryContainer}> </Route>
+                </ Router>
+
+                {/* < CategoryContainer /> */}
             </div>
         )
     }

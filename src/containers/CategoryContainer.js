@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Shops from '../components/Shops'
 import { connect } from 'react-redux'
 
-class ShopsContainer extends Component {
+class CategoryContainer extends Component {
     render() {   
         console.log("sc props:", this.props.shops)  
+        // {this.props.match.params.id}
         const shops = this.props.shops 
         const category = shops.length > 0 ? shops[0].category.name : ""
         return (
@@ -22,4 +23,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ShopsContainer)
+export default connect(mapStateToProps)(CategoryContainer)

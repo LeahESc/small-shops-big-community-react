@@ -3,21 +3,25 @@ import './App.css';
 import HomeSearch from './components/HomeSearch'
 import { connect } from 'react-redux'
 import fetchShops from './actions/categoryActions'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'
+import CategoryContainer from './containers/CategoryContainer'
+import ShopContainer from './containers/ShopContainer'
 
 class App extends Component {
   
   
   render() { 
     return (
-      <div className="App">
-        <header className="header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1>SMALL SHOPS</h1>
-          <h2>BIG COMMUNITY!</h2>
-          <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-          <HomeSearch fetchShops={this.props.fetchShops}/>
-          </header>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <HomeSearch fetchShops={this.props.fetchShops} exact path='/' component={HomeSearch}/>
+          <Route exact path="/categories/:id/shops" component={CategoryContainer} />
+          <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />
+             
       </div>
+      </Router>
     )
   }
 }
