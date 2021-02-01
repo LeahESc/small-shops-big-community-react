@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import fetchCategories from './actions/categoryActions'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
-import CategoryContainer from './containers/CategoryContainer'
+// import CategoryContainer from './containers/CategoryContainer'
 import ShopContainer from './containers/ShopContainer'
 
 class App extends Component {

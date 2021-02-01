@@ -94,13 +94,15 @@ class HomeSearch extends Component {
                         {this.createTagCheckboxes()}
                     </form>
                 </header>
-                <Router> 
-                 <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)}/>
-                </Router>
+                {/* <Router>  */}
+                {/* </Router> */}
             </div>
         )} else { 
             return (
+                <div>
                 <Redirect to={`/categories/${this.state.category.id}/shops`}   />
+                <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)} />
+                </div>      
             )
         }
     }
