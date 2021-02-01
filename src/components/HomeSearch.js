@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../App.css'
 import TagCheckbox from './TagCheckbox'
 import CategoryContainer from '../containers/CategoryContainer'
-import { Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 
 class HomeSearch extends Component {
@@ -14,15 +14,15 @@ class HomeSearch extends Component {
             {id: 3, value:"LGBTQ+-OWNED", checked: false},
             {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
         ],
-        category: ''
+        category: '',
+        redirect: null
     }
 
     handleChange = (e) => {
         this.setState({
             ...this.state,
             search: e.target.value
-        })
-        
+        })    
     }
 
     createTagCheckboxes = () =>  this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )
@@ -42,22 +42,26 @@ class HomeSearch extends Component {
         })
     };
 
-    handleClick = (e) => { 
-        const matchedCategory = this.props.categories.filter(category => category.name.substring(0,3) === this.state.search.substring(0,3))
-        this.setState({
-            ...this.state, 
-            category: matchedCategory
-        })
-        console.log('category:', this.state.category)
-    }
-
-    // findCategory = () => { 
-    //     const matchedCategory = this.props.categories.filter(category => category.substring(0,3) === this.state.search.substring(0,4))
-    //     this.setState({
+    // componentDidUpdate() { 
+    //     if (this.state.search.length > 3) {
+    //         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
+    //         this.setState({
     //         ...this.state, 
     //         category: matchedCategory
     //     })
+    //     }
     // }
+
+    handleSubmit = (e) => { 
+        e.preventDefault()
+        const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
+        this.setState({
+            ...this.state, 
+            category: matchedCategory,
+            redirect: true
+        })
+       
+    }
 
     // handleSubmit = (e) => {
     //     e.preventDefault()
@@ -75,6 +79,7 @@ class HomeSearch extends Component {
     // }  
     
     render() {
+        if (!this.state.redirect) {
         return (
             <div>
                 <header className="header">
@@ -83,19 +88,21 @@ class HomeSearch extends Component {
                     <h2>BIG COMMUNITY!</h2>
                     <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
                 
-               
-                    <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
-                    <Link to={`/categories/${this.state.category.id}/shops`} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)}> 
-                        <button onClick={this.handleClick}>Search</button> 
-                    </Link>
-                    {this.createTagCheckboxes()}
+                    <form onSubmit={this.handleSubmit}> 
+                        <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
+                            <button type="submit">Search</button>
+                        {this.createTagCheckboxes()}
+                    </form>
                 </header>
-                 <Route exact path='/categories/:id/shops' component={CategoryContainer}> </Route>
-                
-
-                {/* < CategoryContainer /> */}
+                <Router> 
+                 <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)}/>
+                </Router>
             </div>
-        )
+        )} else { 
+            return (
+                <Redirect to={`/categories/${this.state.category.id}/shops`}   />
+            )
+        }
     }
 }
 
