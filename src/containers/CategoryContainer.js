@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 
 class CategoryContainer extends Component {
     render() {   
-        console.log("sc props:", this.props.shops)  
+        console.log("sc props:", this.props.category, this.props.tags)  
         // {this.props.match.params.id}
-        const shops = this.props.shops 
-        const category = shops.length > 0 ? shops[0].category.name : ""
+        // const shops = this.props.shops 
+        // const category = shops.length > 0 ? shops[0].category.name : ""
         return (
             <div>
-                {category}
-                <Shops shops={this.props.shops} />
+                {/* {category} */}
+                {/* <Shops shops={this.props.shops} /> */}
             </div>
         )
     }

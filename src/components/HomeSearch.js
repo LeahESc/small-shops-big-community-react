@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import '../App.css'
 import TagCheckbox from './TagCheckbox'
 import CategoryContainer from '../containers/CategoryContainer'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
+
 
 class HomeSearch extends Component {
     state = {
@@ -43,16 +43,21 @@ class HomeSearch extends Component {
     };
 
     handleClick = (e) => { 
-        this.findCategory(this.state)
-    }
-
-    findCategory = () => { 
-        const matchedCategory = this.props.categories.filter(category => category.substring(0,4) === this.state.search.substring(0,4))
+        const matchedCategory = this.props.categories.filter(category => category.name.substring(0,3) === this.state.search.substring(0,3))
         this.setState({
             ...this.state, 
             category: matchedCategory
         })
+        console.log('category:', this.state.category)
     }
+
+    // findCategory = () => { 
+    //     const matchedCategory = this.props.categories.filter(category => category.substring(0,3) === this.state.search.substring(0,4))
+    //     this.setState({
+    //         ...this.state, 
+    //         category: matchedCategory
+    //     })
+    // }
 
     // handleSubmit = (e) => {
     //     e.preventDefault()
@@ -81,14 +86,12 @@ class HomeSearch extends Component {
                
                     <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
                     <Link to={`/categories/${this.state.category.id}/shops`} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)}> 
-                        <button >Search</button> 
+                        <button onClick={this.handleClick}>Search</button> 
                     </Link>
                     {this.createTagCheckboxes()}
-                
                 </header>
-                <Router> 
-                    <Route exact path='/categories/:id/shops' component={CategoryContainer}> </Route>
-                </ Router>
+                 <Route exact path='/categories/:id/shops' component={CategoryContainer}> </Route>
+                
 
                 {/* < CategoryContainer /> */}
             </div>
