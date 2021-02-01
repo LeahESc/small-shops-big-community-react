@@ -1,10 +1,10 @@
 export const fetchCategories = () => { 
     return (dispatch) => { 
-        dispatch({ type: 'LOADING_CATEGORIES'})
-        fetch('http://localhost.3001/categories')
+        dispatch({ type:'LOADING_CATEGORIES'})
+        fetch('http://localhost:3001/categories')
         .then(response => response.json())
-        .then(categories => {
-            return dispatch({ type:'CATEGORIES_LOADED', categories: categories })
+        .then(data => {
+            return dispatch({ type:'CATEGORIES_LOADED', categories: data })
         })
     }
 }

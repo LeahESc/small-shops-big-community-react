@@ -11,7 +11,8 @@ import ShopContainer from './containers/ShopContainer'
 class App extends Component {
   
    componentDidMount() { 
-        this.props.fetchCategories()
+      this.props.fetchCategories()
+      console.log("fetching")
     }
   
   render() { 
