@@ -19,7 +19,7 @@ const Shop = ({url, category_id, name, id, description, social_impact, address, 
             
                 {tags.map(tag => <ShopTag key={tag.id} name={tag.name} /> )}
            
-            {/* <Route path={`${match.path}/:shopId`} component={ShopContainer}/> */}
+            {/* <Route path={`${match.path}/:shopId`} component={ShopContainer} category/> */}
         </div>
     )
 }

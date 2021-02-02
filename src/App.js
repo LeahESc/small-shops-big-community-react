@@ -23,7 +23,7 @@ class App extends Component {
           <Navbar />
           <HomeSearch fetchCategories={this.props.fetchCategories} categories={this.props.categories} exact path='/' component={HomeSearch}/>
           <Route exact path="/categories/:id/shops" component={CategoryContainer} />
-          <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />        
+          {/* <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />         */}
       </div>
       </Router>
     )
