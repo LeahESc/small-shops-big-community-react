@@ -11,7 +11,7 @@ class HomeSearch extends Component {
             {id: 1, value:"BIPOC-OWNED", checked: false},
             {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
             {id: 3, value:"LGBTQ+-OWNED", checked: false},
-            {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
+            {id: 4, value:"SOCIAL IMPACT COMMITMENT", checked: false}
         ],
         category: '',
         redirect: null
@@ -54,9 +54,8 @@ class HomeSearch extends Component {
     render() {
         if (!this.state.redirect) {
         return (
-            <div>
-                <header className="header">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
+            <div className="homeSearch">
+                <header>
                     <h1>SMALL SHOPS</h1>
                     <h2>BIG COMMUNITY!</h2>
                     <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>

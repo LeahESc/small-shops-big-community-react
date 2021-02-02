@@ -18,7 +18,8 @@ class App extends Component {
   render() { 
     return (
       <Router>
-        <div className="App">
+        <div>
+        {/* <div className="App"> */}
           <Navbar />
           <HomeSearch fetchCategories={this.props.fetchCategories} categories={this.props.categories} exact path='/' component={HomeSearch}/>
           <Route exact path="/categories/:id/shops" component={CategoryContainer} />

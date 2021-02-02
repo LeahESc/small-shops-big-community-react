@@ -1,14 +1,28 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+} */
+
+/* .App {
+  text-align: center;
+} */
+
+.homeSearch { 
+  text-align: center;
 }
 
-.App {
-  text-align: center;
+.category-container{
+  display: flex;
+  flex: 3;
+  background-color: #ffebfb;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: calc(10px + 2vmin);
+  justify-content: space-around;
 }
 
 header {
@@ -22,6 +36,22 @@ header {
   color: #2D14F4;
 }
 
+.body {
+  background-color: #ffebfb;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.shop-list {
+  background-color: #ffebfb;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -30,14 +60,21 @@ code {
 h1 {
   font-size: 8em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #2D14F4;
+  color: #503ce9;
   line-height: 1em;
 }
 
 h2 {
   font-size: 6em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #2D14F4;
+  color: #503ce9;
+  line-height: 1em;
+}
+
+h3 {
+  font-size: 2em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #503ce9;
   line-height: 1em;
 }
 
@@ -47,3 +84,41 @@ h4 {
   color: #fdc03b
 }
 
+h1.shop-name {
+  font-size: 2.25em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #503ce9;
+  line-height: 1em;
+}
+
+h3.shop-description {
+  font-size: 1em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #503ce9;
+  line-height: 1em;
+}
+
+h3.shop-impact {
+  font-size: .8em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  color: #503ce9;
+  line-height: 1em;
+}
+
+h4.shop_tag {
+  font-size: .8em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #fc45dd;
+  line-height: 1em;
+}
+
+h4.shop-webaddress { 
+  font-size: 1em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #fdc03b
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fc45dd;
+  /* opacity: 1; Firefox */
+}

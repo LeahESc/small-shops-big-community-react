@@ -4,20 +4,17 @@ import { connect } from 'react-redux'
 
 class CategoryContainer extends Component {
     render() {   
-        console.log("category container props:", this.props, this.props.tags) 
+        // console.log("category container props:", this.props, this.props.tags) 
         const categoryId = parseInt(this.props.match.params.id)
         const category = this.props.categories.find(c => c.id === categoryId)
         let queryTerms = this.props.location.search.substring(3).split('&')
         const tags = queryTerms.map(term => term.replace(/_/g, " "))
-        const shops = category.shops.filter(s => {
-            if (s.tags.some(tag => tag.name === tags[0])) {
-                return s
-            }}) 
+        const shops = category.shops.filter(s => s.tags.some(t => t.name === tags[0] || t.name === tags[1] || t.name === tags[2]))
+
         return (
-            <div>
-                Results found for {this.props.category} 
-                {shops}
-                {/* <Shops shops={this.props.shops} /> */}
+            <div className='category-container'>
+               <h4>results found for {category.name}:</h4> 
+                <Shops shops={shops}/>
             </div>
         )
     }
