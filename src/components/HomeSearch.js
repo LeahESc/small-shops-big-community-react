@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css'
 import TagCheckbox from './TagCheckbox'
-import CategoryContainer from '../containers/CategoryContainer'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 class HomeSearch extends Component {
@@ -42,42 +41,15 @@ class HomeSearch extends Component {
         })
     };
 
-    // componentDidUpdate() { 
-    //     if (this.state.search.length > 3) {
-    //         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
-    //         this.setState({
-    //         ...this.state, 
-    //         category: matchedCategory
-    //     })
-    //     }
-    // }
-
     handleSubmit = (e) => { 
         e.preventDefault()
-        
         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
         this.setState({
             ...this.state, 
             category: matchedCategory,
             redirect: true
-        })
-       
-    }
-
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-        // const initialTags = [
-        //     {id: 1, value:"BIPOC-OWNED", checked: false},
-        //     {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
-        //     {id: 3, value:"LGBTQ+-OWNED", checked: false},
-        //     {id: 4, value:"COMMITMENT TO SOCIAL IMPACT", checked: false}
-        // ]
-        // this.props.fetchShops(this.state)
-        // this.setState({ 
-        //     category: '',
-        //     tags: initialTags,
-        // })   
-    // }  
+        })   
+    } 
     
     render() {
         if (!this.state.redirect) {
@@ -95,8 +67,6 @@ class HomeSearch extends Component {
                         {this.createTagCheckboxes()}
                     </form>
                 </header>
-                {/* <Router>  */}
-                {/* </Router> */}
             </div>
         )} else { 
             const selectedTags = this.state.tags.filter(tag => tag.checked === true)
@@ -105,7 +75,6 @@ class HomeSearch extends Component {
             return (
                 <div>
                 <Redirect to={ `/categories/${this.state.category.id}/shops/${queryString}` }   />
-                {/* <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)} /> */}
                 </div>      
             )
         }
