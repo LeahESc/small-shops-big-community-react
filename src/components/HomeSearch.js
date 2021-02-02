@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css'
 import TagCheckbox from './TagCheckbox'
-import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 
 class HomeSearch extends Component {
@@ -49,46 +49,26 @@ class HomeSearch extends Component {
         this.props.history.push(`/categories/${matchedCategory.id}/shops/${queryString}`)
     }
 
-    // handleSubmit = (e) => { 
-    //     e.preventDefault()
-    //     const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
-    //     this.setState({
-    //         ...this.state, 
-    //         category: matchedCategory,
-    //         redirect: true
-    //     })   
-    // } 
-    
     render() {
-        // if (!this.state.redirect) {
         return (
             <div className="homeSearch">
                 <header>
                     <h1>SMALL SHOPS</h1>
                     <h2>BIG COMMUNITY!</h2>
                     <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-                
-                    {/* // <form onSubmit={this.handleSubmit}> 
-                        // <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
-                        //     <button type="submit">Search</button> */}
                         <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
                         <button onClick={this.handleClick}>Search</button>
                         {this.createTagCheckboxes()}
-                    {/* // </form> */}
                 </header>
             </div>
-        // )} else { 
-        //     const selectedTags = this.state.tags.filter(tag => tag.checked === true)
-        //     const tagNames = selectedTags.map(tag => tag.value.split(' ').join('_'))
-        //     const queryString="?q="+ tagNames.join('&')
-        //     return (
-        //         <div>
-        //         <Redirect to={ `/categories/${this.state.category.id}/shops/${queryString}` }   />
-        //         </div>      
-        //     )
-        // }
         )
     }
 }
 
-export default HomeSearch;
+const mapStateToProps = (state) => {
+    return {
+      categories: state.categories
+    }
+  }
+
+export default connect(mapStateToProps)(HomeSearch);
