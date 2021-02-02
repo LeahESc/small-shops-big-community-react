@@ -5,10 +5,10 @@ export default class Navbar extends Component {
     render() {
         return (
         < div >
-            <nav className="navbar navbar-light" style={{background: '#5d43f1'}}>
-                <li>
+            <nav className="navbar navbar-light" style={{background: '#fc45dd'}}>
+                
                 <Link to='/'>Home</Link>
-                </li>
+        
             </nav>
         </div>
         )

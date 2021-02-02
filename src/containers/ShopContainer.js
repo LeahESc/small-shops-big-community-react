@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReviewForm from '../components/ReviewForm'
 import Reviews from '../components/Reviews'
+import ShopTag from '../components/ShopTag'
 import { connect } from 'react-redux'
 
 class ShopContainer extends Component {
@@ -8,11 +9,12 @@ class ShopContainer extends Component {
         const urlArray = this.props.match.url.split('/')
         const categoryId = parseInt(urlArray[2])
         const shopId = parseInt(urlArray[urlArray.length-1])
-        const category = state.category.find(category => category.id === categoryId)
-        const shop = category.shops.find(shop => shop.id == shopId)
+        const category = this.props.categories.find(category => category.id === categoryId)
+        const shop = category.shops.find(shop => shop.id === shopId)
 
         return (
-            <div className='shop-body'>
+            <div className='body'>
+                <div className='shop-body'>
                 <h1 className='shop-name'>{shop.name}</h1>
                 <h3 className="shop-description">{shop.description}</h3><br />
            
@@ -26,6 +28,7 @@ class ShopContainer extends Component {
                 <p> Please try to keep all reviews constructive or down-right positive! This app does not support baseless negativity) </p>
             <ReviewForm shop={shop}/>
             <Reviews/>
+            </div>
         </div>
         )
     }
