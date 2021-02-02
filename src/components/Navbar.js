@@ -5,7 +5,7 @@ export default class Navbar extends Component {
     render() {
         return (
         < div >
-            <nav className="navbar  bg-primary">
+            <nav className="navbar navbar-light" style={{background: '#5d43f1'}}>
                 <li>
                 <Link to='/'>Home</Link>
                 </li>

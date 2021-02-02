@@ -14,7 +14,7 @@ class CategoryContainer extends Component {
         return (
             <div className='category-container'>
                <h4>results found for {category.name}:</h4> 
-                <Shops shops={shops}/>
+                <Shops shops={shops} url={this.props.match.url}/>
             </div>
         )
     }

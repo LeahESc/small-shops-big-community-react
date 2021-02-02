@@ -14,7 +14,7 @@ export default class Shops extends Component {
                     alignContent: 'flex-start',
                     height: '100'
                     }}
-                key={shop.id} category={shop.category} name={shop.name} description={shop.description} social_impact={shop.social_impact} address={shop.address} website={shop.website} tags={shop.tags}/> )}
+                key={shop.id} url={this.props.url} category_id={shop.category_id} name={shop.name} id={shop.id} description={shop.description} social_impact={shop.social_impact} address={shop.address} website={shop.website} tags={shop.tags}/> )}
             </div>
         )
     }
