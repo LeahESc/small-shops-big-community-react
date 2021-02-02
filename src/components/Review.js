@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Review = () => {
+const Review = ({text, shop}) => {
     return (
         <div>
-            
+            "{text}"
+            <br/> 
         </div>
     )
 }

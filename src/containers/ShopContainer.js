@@ -27,7 +27,7 @@ class ShopContainer extends Component {
                 <p>Visited this shop recently? What did you purchase that you love? Leave a review below!</p> 
                 <p> Please try to keep all reviews constructive or down-right positive! This app does not support baseless negativity) </p>
             <ReviewForm shop={shop}/>
-            <Reviews/>
+            <Reviews shop={shop}/>
             </div>
         </div>
         )
