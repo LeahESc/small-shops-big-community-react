@@ -54,6 +54,7 @@ class HomeSearch extends Component {
 
     handleSubmit = (e) => { 
         e.preventDefault()
+        
         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
         this.setState({
             ...this.state, 
@@ -98,10 +99,13 @@ class HomeSearch extends Component {
                 {/* </Router> */}
             </div>
         )} else { 
+            const selectedTags = this.state.tags.filter(tag => tag.checked === true)
+            const tagNames = selectedTags.map(tag => tag.value.split(' ').join('_'))
+            const queryString="?q="+ tagNames.join('&')
             return (
                 <div>
-                <Redirect to={`/categories/${this.state.category.id}/shops`}   />
-                <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)} />
+                <Redirect to={ `/categories/${this.state.category.id}/shops/${queryString}` }   />
+                {/* <Route exact path="/categories/:id/shops" component={CategoryContainer} category={this.state.category} tags={this.state.tags.filter(t => t.checked === true)} /> */}
                 </div>      
             )
         }

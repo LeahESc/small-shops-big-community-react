@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 class CategoryContainer extends Component {
     render() {   
-        console.log("sc props:", this.props.category, this.props.tags) 
+        console.log("category container props:", this.props, this.props.tags) 
+        const category = this.props.categories.find(c => c.id === this.props.match.params.id)
         // the props are not getting passed  
         // {this.props.match.params.id}
         // const shops = this.props.shops 
@@ -21,7 +22,7 @@ class CategoryContainer extends Component {
 
 const mapStateToProps = state => { 
     return {
-        shops: state.shops
+        categories: state.categories
     }
 }
 
