@@ -21,9 +21,9 @@ class App extends Component {
         <div className='app-body'>
         {/* <div className="App"> */}
           <Navbar />
-          <HomeSearch fetchCategories={this.props.fetchCategories} categories={this.props.categories} exact path='/' component={HomeSearch}/>
+          <Route exact path='/' render={(props) => <HomeSearch {...props} fetchCategories={this.props.fetchCategories} categories={this.props.categories}/>} />
           <Route exact path="/categories/:id/shops" component={CategoryContainer} />
-          {/* <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />         */}
+          <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />        
       </div>
       </Router>
     )
