@@ -111,7 +111,6 @@ h3.shop-description {
 h3.shop-impact {
   font-size: .8em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: 600;
   color: #503ce9;
   line-height: 1em;
 }
@@ -131,7 +130,7 @@ input.shop_tag {
 }
 
 h4.shop-webaddress { 
-  font-size: 1em;
+  font-size: .8em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #fdc03b
 }

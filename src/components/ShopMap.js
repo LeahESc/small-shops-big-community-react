@@ -49,7 +49,7 @@ const MapContainer = (props) =>  {
             center={center}
             options={options}>
 
-            {props.shops.map(shop => ( 
+             
             <Marker 
                 key={shop.id} 
                 position={defaultLocation}
@@ -59,7 +59,7 @@ const MapContainer = (props) =>  {
                     scaledSize: new window.google.maps.Size(25,25)
                 }}
             />
-            ))}
+            ))
             {selectedShop && ( 
                 <InfoWindow
                     position={defaultLocation}

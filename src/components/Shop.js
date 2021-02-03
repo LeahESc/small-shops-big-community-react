@@ -15,7 +15,7 @@ const Shop = ({url, name, id, description, social_impact, address, website, tags
            
                 {social_impact.length > 2 ? <h3 className='shop-impact'>Social Impact: {social_impact}</h3> : ''}
                 <h4 className='shop-webaddress'>{address}</h4>
-                <h4>{website}</h4><br/>
+                <h4 className='shop-webaddress'>{website}</h4><br/>
             
                 {tags.map(tag => <ShopTag key={tag.id} name={tag.name} /> )}
            
