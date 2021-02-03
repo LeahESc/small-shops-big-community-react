@@ -1,15 +1,16 @@
-export const fetchReviews = () => { 
-    return (dispatch) => { 
-        dispatch({ type:'LOADING_REVIEWS'})
-        fetch('http://localhost:3001/reviews')
-        .then(response => response.json())
-        .then(data => {
-            return dispatch({ type:'REVIEWS_LOADED', reviews: data })
-        })
-    }
-}
+// export const fetchReviews = () => { 
+//     return (dispatch) => { 
+//         dispatch({ type:'LOADING_REVIEWS'})
+//         fetch('http://localhost:3001/reviews')
+//         .then(response => response.json())
+//         .then(data => {
+//             return dispatch({ type:'REVIEWS_LOADED', reviews: data })
+//         })
+//     }
+// }
 
-export const addReview = (review) => { 
+export const addReview = (review, category) => { 
+    const updatingCategory = category
     return (dispatch) => { 
         dispatch({ type:'ADD_REVIEW'})
         fetch('http://localhost:3001/reviews', {
@@ -20,8 +21,8 @@ export const addReview = (review) => {
             }
         })
         .then(response => response.json())
-        .then(data => {
-            return dispatch({ type:'REVIEW_ADDED', review: data })
+        .then(review => {
+            return dispatch({ type:'REVIEW_ADDED', review: review, category: updatingCategory })
         })
     }
 }

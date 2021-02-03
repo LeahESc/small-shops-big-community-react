@@ -4,8 +4,9 @@ import categoriesReducer from './categoriesReducer'
 
 
 const rootReducer = combineReducers({ 
-  reviewsReducer,
-  categoriesReducer
+//   reviewsReducer,
+  categoriesReducer,
+//   shopsReducer
 });
 
 export default rootReducer

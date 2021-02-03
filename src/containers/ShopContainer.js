@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import ReviewForm from '../components/ReviewForm'
 import Reviews from '../components/Reviews'
 import ShopTag from '../components/ShopTag'
-import {fetchReviews} from '../actions/reviewActions'
+// import {fetchReviews} from '../actions/reviewActions'
 import { connect } from 'react-redux'
 
 class ShopContainer extends Component {
-    componentDidMount = () => { 
-        this.props.fetchReviews()
-    }
+    // componentDidMount = () => { 
+    //     this.props.fetchReviews()
+    // }
 
     render() {
         const urlArray = this.props.match.url.split('/')
@@ -31,7 +31,7 @@ class ShopContainer extends Component {
                 <hr /> 
                 <p>Visited this shop recently? What did you purchase that you love? Leave a review below!</p> 
                 <p> Please try to keep all reviews constructive or down-right positive! This app does not support baseless negativity) </p>
-            <ReviewForm shop={shop}/>
+            <ReviewForm shop={shop} category={category}/>
             <Reviews shop={shop}  />
             </div>
         </div>
@@ -42,7 +42,7 @@ class ShopContainer extends Component {
 const mapStateToProps = state => { 
     return { 
         categories: state.categoriesReducer.categories, 
-        reviews: state.reviewsReducer.reviews
+        // reviews: state.reviewsReducer.reviews
     }
 }
-export default connect(mapStateToProps, {fetchReviews})(ShopContainer)
+export default connect(mapStateToProps)(ShopContainer)
