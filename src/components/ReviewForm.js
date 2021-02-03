@@ -18,7 +18,8 @@ class ReviewForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const review = this.state
+        const review = {...this.state, shop_id: this.props.shop.id}
+        console.log("review obj:", review)
         this.props.addReview(review)
         this.setState({
             text: ''
@@ -29,7 +30,7 @@ class ReviewForm extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}> 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Write your review below!</Form.Label>
                         <Form.Control as="textarea" size="lg" type="text" id={this.props.shop.id} onChange={this.handleChange} value={this.state.text} placeholder="The owners here are incredible!" />
                         <Button variant="light" type="submit">

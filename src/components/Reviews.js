@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import Review from './Review'
 
 export default class Reviews extends Component {
-    render() {
+    
 
+    render() {
+        console.log("shop", this.props.shop)
         // const reviews = this.props.shop.reviews
         return (
             <div>
