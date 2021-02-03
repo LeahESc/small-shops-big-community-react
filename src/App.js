@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import CategoryContainer from './containers/CategoryContainer'
 import ShopContainer from './containers/ShopContainer'
 
+
 class App extends Component {
   
    componentDidMount() { 

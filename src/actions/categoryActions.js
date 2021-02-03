@@ -1,4 +1,4 @@
-export const fetchCategories = () => { 
+const fetchCategories = () => { 
     return (dispatch) => { 
         dispatch({ type:'LOADING_CATEGORIES'})
         fetch('http://localhost:3001/categories')
