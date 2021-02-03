@@ -22,7 +22,7 @@ class CategoryContainer extends Component {
 
 const mapStateToProps = state => { 
     return {
-        categories: state.categories
+        categories: state.categoriesReducer.categories
     }
 }
 

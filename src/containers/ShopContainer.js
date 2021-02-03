@@ -36,7 +36,8 @@ class ShopContainer extends Component {
 
 const mapStateToProps = state => { 
     return { 
-        categories: state.categories
+        categories: state.categoriesReducer.categories, 
+        reviews: state.reviewsReducer.reviews
     }
 }
 export default connect(mapStateToProps)(ShopContainer)

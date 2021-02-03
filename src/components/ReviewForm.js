@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { connect } from 'react-redux'
+import {addReview} from '../actions/reviewActions'
 
-export default class ReviewForm extends Component {
+class ReviewForm extends Component {
     
     state= {
         text: ''
@@ -16,7 +18,11 @@ export default class ReviewForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        
+        const review = this.state
+        this.props.addReview(review)
+        this.setState({
+            text: ''
+        })
     }
 
     render() {
@@ -36,3 +42,4 @@ export default class ReviewForm extends Component {
         )
     }
 }
+export default connect(null, {addReview})(ReviewForm)

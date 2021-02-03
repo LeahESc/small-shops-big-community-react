@@ -6,9 +6,9 @@ import App from './App';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import categoriesReducer from './reducers/categoriesReducer'
+import rootReducer from './reducers/index'
 
-let store = createStore(categoriesReducer, applyMiddleware(thunk))
+let store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
