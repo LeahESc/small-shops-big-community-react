@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import shopicon from '../images/shopicon.jpg'
 import Shop from './Shop'
-import { Grid, Divider, Item } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 
 export default class Shops extends Component {
     render() {

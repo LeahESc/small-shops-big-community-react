@@ -46,6 +46,7 @@ class HomeSearch extends Component {
 
     handleClick = (e) => {
         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
+        // I need to throw an error message here if there is no matched category!! 
         const selectedTags = this.state.tags.filter(tag => tag.checked === true)
         const tagNames = selectedTags.map(tag => tag.value.split(' ').join('_'))
         const queryString="?q="+ tagNames.join('&')
