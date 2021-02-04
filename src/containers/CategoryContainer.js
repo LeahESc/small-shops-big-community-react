@@ -14,7 +14,7 @@ class CategoryContainer extends Component {
         const tags = queryTerms.map(term => term.replace(/_/g, " "))
         const shops = category.shops.filter(s => s.tags.some(t => t.name === tags[0] || t.name === tags[1] || t.name === tags[2] || t.name === tags[3]))
 
-        if (category.shops.length === 0){
+        if (shops.length === 0){
             return <h4>I'm sorry, I couldn't find anything for that search.</h4> 
         } else { 
         return (

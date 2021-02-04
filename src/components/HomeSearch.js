@@ -54,23 +54,19 @@ class HomeSearch extends Component {
 
     render() {
         return (
-            <div className="homeSearch">
-                <header>
-                    <Container> 
-                    {/* <img src={logo} alt="Logo" /> */}
-                    <h1>SMALL SHOPS</h1>
-                    <h2>BIG COMMUNITY</h2>
-                    <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-                    <Button onClick={this.handleClick} floated="right" color='yellow' padding='15px'>
-                        Search
-                    </Button>
-                    <Input fluid type="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
-                    <br/>
-                    {/* <button onClick={this.handleClick}>Search</button> */}
-                    {this.createTagCheckboxes()}
-                    </Container>
-                </header>
-            </div>
+            <Container> 
+                {/* <img src={logo} alt="Logo" /> */}
+                <h1>SMALL SHOPS</h1>
+                <h2>BIG COMMUNITY</h2>
+                <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
+                <Button onClick={this.handleClick} floated="right" color='yellow' padding='15px'>
+                    Search
+                </Button>
+                <Input fluid type="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
+                <br/>
+                {/* <button onClick={this.handleClick}>Search</button> */}
+                {this.createTagCheckboxes()}
+            </Container>
         )
     }
 }
