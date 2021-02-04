@@ -11,10 +11,10 @@ class HomeSearch extends Component {
     state = {
         search: '',
         tags: [
-            {id: 1, value:"BIPOC-OWNED", checked: false},
-            {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
-            {id: 3, value:"LGBTQ+-OWNED", checked: false},
-            {id: 4, value:"SOCIAL IMPACT COMMITMENT", checked: false}
+            {id: 1, name:"BIPOC-OWNED", checked: false},
+            {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
+            {id: 3, name:"LGBTQ+-OWNED", checked: false},
+            {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
         ],
         category: '',
         redirect: null
@@ -27,7 +27,7 @@ class HomeSearch extends Component {
         })    
     }
 
-    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
+    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
     
     handleCheck = (e) => {
         const name = e.target.name;
@@ -35,7 +35,7 @@ class HomeSearch extends Component {
             ...this.state,
             tags: [
             ...this.state.tags.map(tag => {
-                if (tag.value === name ) {
+                if (tag.name === name ) {
                     return {...tag, checked: !tag.checked}
                 } else {
                     return tag
@@ -48,7 +48,7 @@ class HomeSearch extends Component {
         const matchedCategory = this.props.categories.find(category => category.name.substring(0,3) === this.state.search.substring(0,3))
         // I need to throw an error message here if there is no matched category!! 
         const selectedTags = this.state.tags.filter(tag => tag.checked === true)
-        const tagNames = selectedTags.map(tag => tag.value.split(' ').join('_'))
+        const tagNames = selectedTags.map(tag => tag.name.split(' ').join('_'))
         const queryString="?q="+ tagNames.join('&')
         this.props.history.push(`/categories/${matchedCategory.id}/shops/${queryString}`)
     }

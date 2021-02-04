@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import TagCheckbox from './TagCheckbox'
-import {addShop} from '../actions/shopActions'
+import addShop from '../actions/shopActions'
 import { connect } from 'react-redux'
 
 class ShopForm extends Component {
@@ -13,14 +13,14 @@ class ShopForm extends Component {
         address: '',
         website: '',
         tags: [
-            {id: 1, value:"BIPOC-OWNED", checked: false},
-            {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
-            {id: 3, value:"LGBTQ+-OWNED", checked: false},
-            {id: 4, value:"SOCIAL IMPACT COMMITMENT", checked: false}
+            {id: 1, name:"BIPOC-OWNED", checked: false},
+            {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
+            {id: 3, name:"LGBTQ+-OWNED", checked: false},
+            {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
         ],
     }
 
-    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
+    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
 
 
     handleCheck = (e) => {
@@ -29,7 +29,7 @@ class ShopForm extends Component {
             ...this.state,
             tags: [
             ...this.state.tags.map(tag => {
-                if (tag.value === name ) {
+                if (tag.name === name ) {
                     return {...tag, checked: !tag.checked}
                 } else {
                     return tag
@@ -48,8 +48,10 @@ class ShopForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const selectedTags = this.state.tags.filter(tag => tag.checked === true)
-        const newShop = {...this.state, tags: selectedTags}
+        const tagObjects = selectedTags.map(tag => tag.id)
+        const newShop = {...this.state, tag_ids: tagObjects}
         this.props.addShop(newShop, this.props.category)
+        // this.props.addShopTag(selectedTags, newShop, this.props.category)
         this.setState({
             name: '',
             category_id: this.props.category.id,
@@ -58,10 +60,10 @@ class ShopForm extends Component {
             address: '',
             website: '',
             tags: [
-                {id: 1, value:"BIPOC-OWNED", checked: false},
-                {id: 2, value:"WOMEN/WOMXN-OWNED", checked: false},
-                {id: 3, value:"LGBTQ+-OWNED", checked: false},
-                {id: 4, value:"SOCIAL IMPACT COMMITMENT", checked: false}
+                {id: 1, name:"BIPOC-OWNED", checked: false},
+                {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
+                {id: 3, name:"LGBTQ+-OWNED", checked: false},
+                {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
             ],
         })
     }
