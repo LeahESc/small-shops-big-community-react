@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import mapStyles from '../mapStyles'
 import Geocode from 'react-geocode'
+import { Container}  from 'semantic-ui-react'
 
 const mapContainerStyle = {
     height: "100vh",
@@ -21,6 +22,7 @@ const options = {
 // Geocode.setApiKey(process.env.REACT_APP_COOGLE_GEO_API_KEY)
 
 const MapContainer = (props) =>  {
+    
     const [selectedShop, setSelectedShop] = useState(null)
 
     const {isLoaded, loadError} = useLoadScript({
@@ -40,12 +42,18 @@ const MapContainer = (props) =>  {
     //         const { lat, lng } = response.results[0].geometry.location;
     //         console.log(lat, lng);
     //     })
+    
+    const containerStyle = {
+        marginTop: "20px",
+        marginBottom: "20px",
+      };
 
     return (
-        <div className='map-container'>
+
+        <Container text style={containerStyle}> 
             <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            zoom={12}
+            zoom={15}
             center={center}
             options={options}>
 
@@ -70,7 +78,7 @@ const MapContainer = (props) =>  {
                 </InfoWindow>
             )}
             </GoogleMap>
-        </div>
+        </Container>
     )
 }
 

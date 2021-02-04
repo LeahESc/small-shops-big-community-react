@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css';
+// import './index.css';
 import HomeSearch from './components/HomeSearch'
 import { connect } from 'react-redux'
 import fetchCategories from './actions/categoryActions'
@@ -19,13 +19,12 @@ class App extends Component {
   render() { 
     return (
       <Router>
-        {/* <div className='app-body'> */}
-        {/* <div className="App"> */}
+        <div className="App">
           <Navbar />
           <Route exact path='/' render={(props) => <HomeSearch {...props} fetchCategories={this.props.fetchCategories} categories={this.props.categories}/>} />
           <Route exact path="/categories/:id/shops" component={CategoryContainer} />
           <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />        
-      {/* </div> */}
+        </div>
       </Router>
     )
   }

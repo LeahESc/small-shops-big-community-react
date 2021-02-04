@@ -7,7 +7,7 @@ const Shop = ({url, name, id, description, social_impact, address, website, tags
     console.log('url', url)
 
     return (
-        <div className='shop-body'>
+        <div className='shop'>
             <Link to={`${id}`}>
                 <h1 className='shop-name'>{name}</h1>
             </Link>
@@ -18,9 +18,7 @@ const Shop = ({url, name, id, description, social_impact, address, website, tags
                 <h4 className='shop-webaddress'>{website}</h4><br/>
             
                 {tags.map(tag => <ShopTag key={tag.id} name={tag.name} /> )}
-           
-            {/* <Route path={`${match.path}/:shopId`} component={ShopContainer} category/> */}
-        </div>
+       </div>
     )
 }
 

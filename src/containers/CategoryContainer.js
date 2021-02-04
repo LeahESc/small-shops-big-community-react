@@ -3,6 +3,7 @@ import Shops from '../components/Shops'
 import { connect } from 'react-redux'
 import MapContainer from './MapContainer'
 import { Grid } from 'semantic-ui-react'
+import ShopForm from '../components/ShopForm'
 
 class CategoryContainer extends Component {
     render() {   
@@ -17,15 +18,20 @@ class CategoryContainer extends Component {
             return <h4>I'm sorry, I couldn't find anything for that search.</h4> 
         } else { 
         return (
-            <Grid>
-                <Grid.Column width={10}>
+            <Grid columns={2} padded>
+                <Grid.Column  width={10}>
                 {/* <div className='category-container'> */}
                     <h4>results found for {category.name}:</h4> 
                     <Shops shops={shops} url={this.props.match.url}/>
                 </Grid.Column>
 
                 <Grid.Column width={6}>
-                    <MapContainer shops={shops}/>
+                    <Grid.Row> 
+                        <MapContainer shops={shops}/>
+                    </Grid.Row>
+                    <Grid.Row> 
+                        <ShopForm category={category}/>
+                    </Grid.Row>
                 </Grid.Column >
             </Grid>
         )}

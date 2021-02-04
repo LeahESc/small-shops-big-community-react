@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import {Form, TextArea, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import {addReview} from '../actions/reviewActions'
 
@@ -31,10 +30,10 @@ class ReviewForm extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}> 
-                {/* <Form.Group > */}
-                    <Form.Label>Write your review below!</Form.Label>
-                        <Form.Control as="textarea" size="lg" type="text" id={this.props.shop.id} onChange={this.handleChange} value={this.state.text} placeholder="The owners here are incredible!" />
-                        <Button variant="light" type="submit">
+                
+                    <label>Write your review below!</label>
+                        <TextArea id={this.props.shop.id} onChange={this.handleChange} value={this.state.text} placeholder="The owners here are incredible!" />
+                        <Button color="yellow" type="submit">
                             Submit
                         </Button>
                 {/* </Form.Group> */}

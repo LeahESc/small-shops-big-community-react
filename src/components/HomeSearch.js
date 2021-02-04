@@ -3,7 +3,8 @@ import '../App.css'
 import TagCheckbox from './TagCheckbox'
 import logo from '../images/logo.png'
 import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
+import { Button, Input, Container } from 'semantic-ui-react'
+
 
 
 class HomeSearch extends Component {
@@ -26,7 +27,7 @@ class HomeSearch extends Component {
         })    
     }
 
-    createTagCheckboxes = () =>  this.state.tags.map(tag => <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> )
+    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.value} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
     
     handleCheck = (e) => {
         const name = e.target.name;
@@ -55,16 +56,19 @@ class HomeSearch extends Component {
         return (
             <div className="homeSearch">
                 <header>
-                    <img src={logo} alt="Logo" />
+                    <Container> 
+                    {/* <img src={logo} alt="Logo" /> */}
+                    <h1>SMALL SHOPS</h1>
+                    <h2>BIG COMMUNITY</h2>
                     <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-                    <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
-                    
-                    <Button compact onClick={this.handleClick} floated="right" color='pink' padding='15px'>
+                    <Button onClick={this.handleClick} floated="right" color='yellow' padding='15px'>
                         Search
                     </Button>
-                    
+                    <Input fluid type="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
+                    <br/>
                     {/* <button onClick={this.handleClick}>Search</button> */}
                     {this.createTagCheckboxes()}
+                    </Container>
                 </header>
             </div>
         )

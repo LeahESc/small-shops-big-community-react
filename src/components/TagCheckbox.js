@@ -1,19 +1,20 @@
 import React from 'react'
+// import { Checkbox } from 'semantic-ui-css'
+
 
 const TagCheckbox = ({value, checked, handleCheck}) => { 
     return ( 
-        <div>
-             <label>
-                 <input 
+        <div className='tag-checkbox'>
+            <label>
+                <input 
                     type="checkbox"
                     name={value}
                     value = {value}
                     checked={checked}
                     onChange={handleCheck}
-                    className="form-check-input" 
-                    />
-                    {value}
-                </label>
+                />
+            {value}
+            </label>
         </div>
     )
 }
