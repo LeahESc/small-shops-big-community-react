@@ -71,7 +71,7 @@ class ShopForm extends Component {
     render() {
         return (
             <div className='new-shop-form'>
-                <h4>Don't see the business you're looking for in this search? Add it!</h4>
+                <h4>Don't see the business you're looking for? Add it!</h4>
             <Form onSubmit={this.handleSubmit}>
                  <Form.Input
                     // error={{ content: 'Please enter your first name', pointing: 'below' }}

@@ -81,6 +81,8 @@ code {
 
 .new-shop-form {
   align-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
   color: #503ce9;
 }
 
@@ -176,3 +178,4 @@ p.review-text {
   margin-right: 4em;
   color: #e99be5;
 }
+
