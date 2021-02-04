@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import MapContainer from './MapContainer'
 import { Grid } from 'semantic-ui-react'
 import ShopForm from '../components/ShopForm'
+import {Link } from 'react-router-dom'
 
 class CategoryContainer extends Component {
     render() {   
@@ -15,13 +16,18 @@ class CategoryContainer extends Component {
         const shops = category.shops.filter(s => s.tags.some(t => t.name === tags[0] || t.name === tags[1] || t.name === tags[2] || t.name === tags[3]))
 
         if (shops.length === 0){
-            return <h4>I'm sorry, I couldn't find anything for that search.</h4> 
+            return (
+            <div>  
+                <h4>Sorry, we couldn't find anything for that search.</h4> 
+                <Link to='/'>Click here to try your search again </Link>
+            </div>  
+            )
         } else { 
         return (
             <Grid columns={2} padded>
                 <Grid.Column  width={10}>
                 {/* <div className='category-container'> */}
-                    <h4>results found for {category.name}:</h4> 
+                    <h4>results found related to your search:</h4> 
                     <Shops shops={shops} url={this.props.match.url}/>
                 </Grid.Column>
 
