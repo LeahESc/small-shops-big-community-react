@@ -33,6 +33,41 @@ const categoriesReducer = (state={categories: [], loading: false}, action) => {
             }],
             loading: false
         }
+
+        case 'ADD_SHOP': 
+        return {
+            ...state,
+            categories: [...state.categories],
+            loading: true
+        }
+
+        case 'SHOP_ADDED': 
+        const newShop = action.shop
+        const filteredCategories = state.categories.filter(c => c.id !== action.category.id)
+        const newCategory = {...action.category, shops: [...action.category.shops, newShop]}
+        
+        return {
+            ...state, 
+            categories: filteredCategories.concat(newCategory),
+            loading: false
+        }
+        case 'ADD_SHOPTAG': 
+        return {
+            ...state,
+            categories: [...state.categories],
+            loading: true
+        }
+
+        case 'SHOPTAG_ADDED': 
+        const foundShop = action.shop
+        const filteredCategories = state.categories.filter(c => c.id !== action.category.id)
+        const newCategory = {...action.category, shops: [...action.category.shops, newShop]}
+        
+        return {
+            ...state, 
+            categories: filteredCategories.concat(newCategory),
+            loading: false
+        }
         default: 
         return state
     }
