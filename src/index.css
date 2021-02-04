@@ -79,6 +79,11 @@ code {
     monospace;
 }
 
+.new-shop-form {
+  align-content: center;
+  color: #503ce9;
+}
+
 h1 {
   padding-top: 1.5em;
   font-size: 8em;
