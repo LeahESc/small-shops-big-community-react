@@ -42,10 +42,11 @@ const MapContainer = (props) =>  {
     //         const { lat, lng } = response.results[0].geometry.location;
     //         console.log(lat, lng);
     //     })
-    
+
     const containerStyle = {
         marginTop: "20px",
         marginBottom: "20px",
+        marginRight: "20px"
       };
 
     return (
