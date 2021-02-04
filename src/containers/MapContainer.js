@@ -18,7 +18,7 @@ const options = {
     zoomControl: true
 }
 
-Geocode.setApiKey(process.env.REACT_APP_COOGLE_GEO_API_KEY)
+// Geocode.setApiKey(process.env.REACT_APP_COOGLE_GEO_API_KEY)
 
 const MapContainer = (props) =>  {
     const [selectedShop, setSelectedShop] = useState(null)
@@ -35,11 +35,11 @@ const MapContainer = (props) =>  {
         lng: -118.2437
     }
 
-    Geocode.fromAddress(props.shops[0].address).then(
-        response => {
-            const { lat, lng } = response.results[0].geometry.location;
-            console.log(lat, lng);
-        })
+    // Geocode.fromAddress(props.shops[0].address).then(
+    //     response => {
+    //         const { lat, lng } = response.results[0].geometry.location;
+    //         console.log(lat, lng);
+    //     })
 
     return (
         <div className='map-container'>

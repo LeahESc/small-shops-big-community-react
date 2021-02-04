@@ -3,6 +3,7 @@ import '../App.css'
 import TagCheckbox from './TagCheckbox'
 import logo from '../images/logo.png'
 import { connect } from 'react-redux'
+import { Button } from 'semantic-ui-react'
 
 
 class HomeSearch extends Component {
@@ -56,9 +57,14 @@ class HomeSearch extends Component {
                 <header>
                     <img src={logo} alt="Logo" />
                     <h4>Start your search by typing in the kind of business you'd like to patronize and select the parameters of businesses you'd like to support</h4>
-                        <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
-                        <button onClick={this.handleClick}>Search</button>
-                        {this.createTagCheckboxes()}
+                    <input type ="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
+                    
+                    <Button compact onClick={this.handleClick} floated="right" color='pink' padding='15px'>
+                        Search
+                    </Button>
+                    
+                    {/* <button onClick={this.handleClick}>Search</button> */}
+                    {this.createTagCheckboxes()}
                 </header>
             </div>
         )
