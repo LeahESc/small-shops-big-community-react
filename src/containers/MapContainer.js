@@ -3,6 +3,7 @@ import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps
 import mapStyles from '../mapStyles'
 import Geocode from 'react-geocode'
 import { Container}  from 'semantic-ui-react'
+import shopicon from '../images/shopicon.jpg'
 
 const mapContainerStyle = {
     height: "90vh",
@@ -37,6 +38,24 @@ const MapContainer = (props) =>  {
         lng: -118.2437
     }
 
+    const geocode = (shop) => {
+        let location = shop.address.split(' ').join('+')
+        let key = process.env.REACT_APP_GOOGLE_API_KEY
+        console.log(location)
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`, {
+            params: {
+                address: props.shops[0].address,
+                key: process.env.REACT_APP_GOOGLE_API_KEY
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data.results[0].geometry.location)
+            return data.results[0].geometry.location
+        })
+    }
+
+  
     // Geocode.fromAddress(props.shops[0].address).then(
     //     response => {
     //         const { lat, lng } = response.results[0].geometry.location;
@@ -61,10 +80,11 @@ const MapContainer = (props) =>  {
             {props.shops.map(shop => ( 
             <Marker 
                 key={shop.id} 
-                position={defaultLocation}
-                onClick={() => setSelectedShop(shop)}
+                
+                position={geocode(shop)}
+                // onClick={() => setSelectedShop(shop)}
                 icons={{
-                    url: "..public/someimage.jpg",
+                    icon: shopicon,
                     scaledSize: new window.google.maps.Size(25,25)
                 }}
             />
