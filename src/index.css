@@ -83,16 +83,16 @@ code {
 }
 
 h1 {
-  padding-top: 1.5em;
-  font-size: 8em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 1em;
+  font-size: 11em;
+  font-family: 'Luckiest Guy', cursive;
   color: #3b21fd;
   line-height: 1em;
 }
 
 h2 {
-  font-size: 6em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 8em;
+  font-family: 'Luckiest Guy', cursive;
   color: #3b21fd;
   line-height: 1em;
 }
@@ -106,13 +106,15 @@ h3 {
 
 h4 {
   font-size: 1.5em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
   color: #e982e0
 }
 
 h1.shop-name {
   font-size: 3.5em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
   color: #331be9;
   line-height: 1em;
 }
@@ -120,7 +122,7 @@ h1.shop-name {
 h3.shop-description {
   font-size: 1.5em;
   font-weight: 200;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color:  #331be9;
   line-height: 1.2em;
 }
@@ -128,7 +130,7 @@ h3.shop-description {
 h3.shop-impact {
   font-size: 1.5em;
   font-weight: 200;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color:  #331be9;
   line-height: 1.2em;
 }
@@ -149,7 +151,7 @@ input.shop_tag {
 
 h4.shop-webaddress { 
   font-size: 1.15em;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: rgb(255, 145, 0)
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -175,3 +177,7 @@ p.review-text {
   color: #e99be5;
 }
 
+.shop-map {
+  margin-top: 5em
+
+}

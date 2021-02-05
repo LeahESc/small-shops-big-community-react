@@ -5,8 +5,8 @@ import shopicon from '../images/shopicon.jpg'
 import { Container}  from 'semantic-ui-react'
 
 const mapContainerStyle = {
-    height: "70vh",
-    width: "70vw",
+    height: "60vh",
+    width: "35vw",
 }
 
 const center = {
@@ -42,14 +42,9 @@ const ShopMapContainer = ({shop}) =>  {
     //         console.log(lat, lng);
     //     })
 
-    const containerStyle = {
-        marginTop: "100px",
-        marginRight: "20px"
-      };
-
     return (
 
-        <Container style={containerStyle}> 
+        <div className="shop-map"> 
             <GoogleMap
             mapContainerStyle={mapContainerStyle}
             zoom={10}
@@ -67,7 +62,7 @@ const ShopMapContainer = ({shop}) =>  {
             />
             </GoogleMap>
         {/* ))} */}
-        </Container>
+        </div>
             
         // </Container>
     )

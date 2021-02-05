@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Review = ({text, shop}) => {
+const Review = ({text}) => {
     return (
         <>
         <br/> 
-        <h4>"{text}"</h4>
+        <p className='review-text'>{text}</p>
         </>
     )
 }

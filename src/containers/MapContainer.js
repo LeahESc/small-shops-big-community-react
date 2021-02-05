@@ -19,7 +19,7 @@ const options = {
     zoomControl: true
 }
 
-// Geocode.setApiKey(process.env.REACT_APP_COOGLE_GEO_API_KEY)
+// Geocode.setApiKey(process.env.REACT_APP_COOGLE_API_KEY)
 
 const MapContainer = (props) =>  {
     

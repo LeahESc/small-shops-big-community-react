@@ -24,10 +24,10 @@ class ShopContainer extends Component {
             <div>
             <Item>
                 <Item.Content>
-            <ShopCarousel shop={shop} />
+                    <ShopCarousel shop={shop} />
                 </Item.Content>
             </Item>
-            <Grid columns={2} >
+            <Grid columns={3} padding >
                 <Grid.Column  width={10}>
                     <Item.Group divided>
                         <Item>
@@ -43,10 +43,12 @@ class ShopContainer extends Component {
                     <Reviews shop={shop}  />
                     
                 </Grid.Column>
-                <Grid.Column width={5}>
+             
+                <Grid.Column width={4} floated='left'>
                     <ShopMapContainer shop={shop} />
                 </Grid.Column>
-                <Grid.Column width={1}>
+                <Grid.Column width={2}>
+                    
                 </Grid.Column>
             </Grid>
          </div>

@@ -30,21 +30,15 @@ class ReviewForm extends Component {
         return (
             <div className='review-form'>
                 <p className='review-text'>Visited this shop recently? What did you purchase that you love? Leave a review below!</p> 
-                <p className='review-text'> Please try to keep all reviews constructive or down-right positive! </p>
             
-                {/* <form onSubmit={this.handleSubmit}>  */}
                 <Form onSubmit={this.handleSubmit}> 
-                
-                    <p className='review-text'>Write your review below!</p>
-                        <TextArea id={this.props.shop.id} onChange={this.handleChange} value={this.state.text} placeholder="The owners here are incredible!" />
-                        <Button color="yellow" type="submit">
-                            Submit
-                        </Button>
-                        <br/>
-                {/* </Form.Group> */}
-                <br />
+                    <TextArea id={this.props.shop.id} onChange={this.handleChange} value={this.state.text} placeholder="The owners here are incredible!" />
+                    <Button color="yellow" type="submit">
+                        Submit
+                    </Button>
+                    <br/>
+                    <br/>
                 </Form>
-                {/* </form> */}
             </div>
         )
     }
@@ -53,7 +47,6 @@ class ReviewForm extends Component {
 const mapStateToProps = state => { 
     return { 
         categories: state.categoriesReducer.categories, 
-        // reviews: state.reviewsReducer.reviews
     }
 }
 export default connect(mapStateToProps, {addReview})(ReviewForm)

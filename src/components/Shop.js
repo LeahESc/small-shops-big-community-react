@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import ShopTag from './ShopTag'
 
 const Shop = ({url, name, id, description, social_impact, address, website, tags}) => {
-    
-    console.log('url', url)
 
     return (
         <div className='shop'>

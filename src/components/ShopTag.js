@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
+
 const ShopTag = ({name}) => {
     return (
         <div className='shoptag'>
