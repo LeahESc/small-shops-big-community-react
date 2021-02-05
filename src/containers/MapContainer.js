@@ -5,8 +5,8 @@ import Geocode from 'react-geocode'
 import { Container}  from 'semantic-ui-react'
 
 const mapContainerStyle = {
-    height: "100vh",
-    width: "100vw",
+    height: "90vh",
+    width: "90vw",
 }
 
 const center = {
@@ -51,7 +51,7 @@ const MapContainer = (props) =>  {
 
     return (
 
-        <Container text style={containerStyle}> 
+        // <Container style={containerStyle}> 
             <GoogleMap
             mapContainerStyle={mapContainerStyle}
             zoom={10}
@@ -79,7 +79,7 @@ const MapContainer = (props) =>  {
                 </InfoWindow>
             )}
             </GoogleMap>
-        </Container>
+        // </Container>
     )
 }
 

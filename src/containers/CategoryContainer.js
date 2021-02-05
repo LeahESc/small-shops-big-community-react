@@ -34,11 +34,12 @@ class CategoryContainer extends Component {
                         <Shops shops={shops} url={this.props.match.url}/>
                     </Grid.Column>
 
-                    <Grid.Column width={6}>
+                    <Grid.Column width={5}>
                         <Grid.Row> 
                             <MapContainer shops={shops}/>
                         </Grid.Row>
                         <Grid.Row> 
+                            <br/>
                             <ShopForm category={category}/>
                         </Grid.Row>
                     </Grid.Column >
