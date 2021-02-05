@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import './index.css';
-import HomeSearch from './components/HomeSearch'
+import HomeSearch from './containers/HomeSearch'
 import { connect } from 'react-redux'
 import fetchCategories from './actions/categoryActions'
 import { BrowserRouter as Router, Route } from 'react-router-dom';

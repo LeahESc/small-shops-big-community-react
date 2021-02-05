@@ -9,7 +9,7 @@ const Navbar = () => {
         < div >
             <nav className="navbar navbar-light" style={{background: '#ffecfc'}}>
                 <Link to='/'>
-                    <Icon name='home' size='big' color='yellow'/>
+                    <Icon name='home' size='huge' color='yellow'/>
                 </Link>
             </nav>
         </div>

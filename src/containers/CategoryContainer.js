@@ -5,6 +5,7 @@ import MapContainer from './MapContainer'
 import { Grid } from 'semantic-ui-react'
 import ShopForm from '../components/ShopForm'
 import {Link } from 'react-router-dom'
+import uuid from 'react-uuid'
 
 class CategoryContainer extends Component {
     render() {   
@@ -22,26 +23,26 @@ class CategoryContainer extends Component {
                 <div>  
                     <h4>Sorry, we couldn't find anything for that search. Try adding some parameters next time!</h4> 
                     <Link to='/'>Head back to home to try your search again </Link>
-                    <ShopForm category={category}/>
+                    <ShopForm key={uuid()} category={category}/>
                 </div>  
             )
         } else { 
             return (
-                <Grid columns={3} >
-                    <Grid.Column width={1}>
+                <Grid key={uuid()} columns={3} >
+                    <Grid.Column key={uuid()} width={1}>
                     </Grid.Column>
-                    <Grid.Column  width={9}>
+                    <Grid.Column  key={uuid()} width={9}>
                     {/* <div className='category-container'> */}
                         <h4>results found related to your search:</h4> 
-                        <Shops shops={shops} url={this.props.match.url}/>
+                        <Shops key={uuid()} shops={shops} url={this.props.match.url}/>
                     </Grid.Column>
 
-                    <Grid.Column width={5}>
-                        <Grid.Row> 
-                            <MapContainer shops={shops}/>
+                    <Grid.Column key={uuid()} width={5}>
+                        <Grid.Row key={uuid()} > 
+                            <MapContainer key={uuid()} shops={shops}/>
                         </Grid.Row>
-                        <Grid.Row> 
-                            <ShopForm category={category}/>
+                        <Grid.Row key={uuid()} > 
+                            <ShopForm key={uuid()} category={category}/>
                         </Grid.Row>
                     </Grid.Column >
                 </Grid>

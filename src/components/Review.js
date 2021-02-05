@@ -4,7 +4,7 @@ const Review = ({text}) => {
     return (
         <>
         <br/> 
-        <p className='review-text'>{text}</p>
+        <p className='review-text'>"{text}"</p>
         </>
     )
 }
