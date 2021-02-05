@@ -71,6 +71,7 @@ class ShopForm extends Component {
     render() {
         return (
             <div className='new-shop-form'>
+                <br />
                 <h4>Don't see the business you're looking for? Add it!</h4>
             <Form onSubmit={this.handleSubmit}>
                  <Form.Input

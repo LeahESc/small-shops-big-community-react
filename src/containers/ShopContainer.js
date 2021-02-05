@@ -4,6 +4,7 @@ import Reviews from '../components/Reviews'
 // import shopicon from '../images/shopicon.jpg'
 import Shop from '../components/Shop'
 import ShopCarousel from '../components/ShopCarousel'
+import ShopMapContainer from './ShopMapContainer'
 import { Grid, Item } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
@@ -42,8 +43,10 @@ class ShopContainer extends Component {
                     <Reviews shop={shop}  />
                     
                 </Grid.Column>
-                <Grid.Column width={6}>
-                    {/* <img src='http://images.otstatic.com/prod/24713033/1/huge.jpg' alt='img' style={{height: '360px', width: '360px'}} /> */}
+                <Grid.Column width={5}>
+                    <ShopMapContainer shop={shop} />
+                </Grid.Column>
+                <Grid.Column width={1}>
                 </Grid.Column>
             </Grid>
          </div>

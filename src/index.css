@@ -70,10 +70,6 @@
   /* justify-content: left; */
 }
 
-.form-check-input {
-  color: #fc45dd;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -81,8 +77,8 @@ code {
 
 .new-shop-form {
   align-content: center;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   color: #503ce9;
 }
 

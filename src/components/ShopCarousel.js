@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
+import Shop from './Shop';
 
 
 export default class ShopCarousel extends Component {
-// we check if we got event from input (and it has target property) or just value from Carousel 
+
   state = {
       value: 0,
   }
@@ -14,23 +15,26 @@ export default class ShopCarousel extends Component {
 
 
   render() {
-    
-    const imageOne ='http://cdn2.lamag.com/wp-content/uploads/sites/6/2015/09/barcito.jpg' 
-    const imageTwo ='http://cdn2.lamag.com/wp-content/uploads/sites/6/2015/09/barcito.jpg' 
+    const shop = this.props.shop 
 
+   
+    const imageOne ='https://images.unsplash.com/photo-1453614512568-c4024d13c247?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80' 
+    const imageTwo ='https://images.unsplash.com/photo-1529417305485-480f579e7578?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=809&q=80' 
+    const imageThree ='https://images.unsplash.com/photo-1540380968028-950d9ea1507e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=853&q=80' 
+   
 
     return (
       <div>
-        <input type='hidden' value={this.state.value} onChange={this.onChange} type="number" />
+        {/* <input type='hidden' onChange={this.onChange} type="number" /> */}
         <Carousel
           arrows 
           
-          value={this.state.value}
-          onChange={this.onChange}
+          // value={this.state.value}
+          // onChange={this.onChange}
         >
           <img src={imageOne} />
           <img src={imageTwo} />
-          {/* <img src={imageThree} /> */}
+          <img src={imageThree} />
         </Carousel>
       </div>
     )

@@ -27,8 +27,10 @@ class CategoryContainer extends Component {
             )
         } else { 
             return (
-                <Grid columns={2} padded>
-                    <Grid.Column  width={10}>
+                <Grid columns={3} >
+                    <Grid.Column width={1}>
+                    </Grid.Column>
+                    <Grid.Column  width={9}>
                     {/* <div className='category-container'> */}
                         <h4>results found related to your search:</h4> 
                         <Shops shops={shops} url={this.props.match.url}/>
@@ -39,7 +41,6 @@ class CategoryContainer extends Component {
                             <MapContainer shops={shops}/>
                         </Grid.Row>
                         <Grid.Row> 
-                            <br/>
                             <ShopForm category={category}/>
                         </Grid.Row>
                     </Grid.Column >
