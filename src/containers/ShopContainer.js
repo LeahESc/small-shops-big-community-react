@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ReviewForm from '../components/ReviewForm'
 import Reviews from '../components/Reviews'
-import shopicon from '../images/shopicon.jpg'
+// import shopicon from '../images/shopicon.jpg'
 import Shop from '../components/Shop'
+import ShopCarousel from '../components/ShopCarousel'
 import { Grid, Item } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
@@ -20,21 +21,29 @@ class ShopContainer extends Component {
         const imgURL="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.otstatic.com%2Fprod%2F24713033%2F1%2Fhuge.jpg&imgrefurl=https%3A%2F%2Fwww.opentable.com%2Fr%2Fbarcito-los-angeles&tbnid=6ZRmw-0_6W-KBM&vet=12ahUKEwjhqNmAuM_uAhXIgZ4KHQ7LDLkQMygBegQIARAy..i&docid=QU73cxsH0fR9zM&w=1280&h=1280&q=barcitola%20restaurant%20images&ved=2ahUKEwjhqNmAuM_uAhXIgZ4KHQ7LDLkQMygBegQIARAy" 
         return (
             <div>
+            <Item>
+                <Item.Content>
+            <ShopCarousel shop={shop} />
+                </Item.Content>
+            </Item>
             <Grid columns={2} >
                 <Grid.Column  width={10}>
                     <Item.Group divided>
                         <Item>
-                        <img src={imgURL} alt='img'/>
                         {/* <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.otstatic.com%2Fprod%2F24713033%2F1%2Fhuge.jpg&imgrefurl=https%3A%2F%2Fwww.opentable.com%2Fr%2Fbarcito-los-angeles&tbnid=6ZRmw-0_6W-KBM&vet=12ahUKEwjhqNmAuM_uAhXIgZ4KHQ7LDLkQMygBegQIARAy..i&docid=QU73cxsH0fR9zM&w=1280&h=1280&q=barcitola%20restaurant%20images&ved=2ahUKEwjhqNmAuM_uAhXIgZ4KHQ7LDLkQMygBegQIARAy" alt='img'/> */}
-
+                        <br/>
                             <Item.Content>
                                 <Shop key={shop.id} url={this.props.match.url} category_id={categoryId} name={shop.name} id={shop.id} description={shop.description} social_impact={shop.social_impact} address={shop.address} website={shop.website} tags={shop.tags}/> 
                             </Item.Content>
                         </Item>
                     </Item.Group>
+                    
                     <ReviewForm shop={shop} category={category}/>
                     <Reviews shop={shop}  />
-                
+                    
+                </Grid.Column>
+                <Grid.Column width={6}>
+                    {/* <img src='http://images.otstatic.com/prod/24713033/1/huge.jpg' alt='img' style={{height: '360px', width: '360px'}} /> */}
                 </Grid.Column>
             </Grid>
          </div>

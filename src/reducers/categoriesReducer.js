@@ -21,18 +21,20 @@ const categoriesReducer = (state={categories: [], loading: false}, action) => {
         }
 
         case 'REVIEW_ADDED': 
-        const category = action.category
-        const shop = category.shops.find(shop => shop.id === action.review.shop_id)
+        // const category = action.category
+        const reducedCategories = state.categories.filter(c => c.id !== action.category.id)
+        const shop = action.category.shops.find(shop => shop.id === action.review.shop_id)
+        const reducedShops = action.category.shops.filter(shop => shop.id !== action.review.shop_id)
         const review = action.review
+        const updatedShop = {...shop, reviews: [...shop.reviews, review]}
+        const updatedCategory = {...action.category, shops: reducedShops.concat(updatedShop)}
+
         return {
-            ...state, 
-            categories: [{...category, 
-                shops: [{...shop, 
-                    reviews: [...shop.reviews, review]
-                }]
-            }],
-            loading: false
-        }
+                ...state, 
+                categories: reducedCategories.concat(updatedCategory),
+                loading: false
+            }
+         
 
         case 'ADD_SHOP': 
         return {
@@ -51,24 +53,6 @@ const categoriesReducer = (state={categories: [], loading: false}, action) => {
             categories: filteredCategories.concat(newCategory),
             loading: false
         }
-        // case 'ADD_SHOPTAG': 
-        // return {
-        //     ...state,
-        //     categories: [...state.categories],
-        //     loading: true
-        // }
-
-        // case 'SHOPTAG_ADDED': 
-        // // const foundShop = action.shop
-        // // const shopTagShop = {...foundShop, }
-        // // const catCategories = state.categories.filter(c => c.id !== action.category.id)
-        // // const foundCategory = {...action.category, shops: [...action.category.shops, newShop]}
-        
-        // return {
-        //     ...state,
-        //     categories: [...state.categories],
-        //     loading: true
-        // }
         default: 
         return state
     }
@@ -84,4 +68,15 @@ export default categoriesReducer
 //             }
 //         ]}
 //     ]
+// }
+
+
+//  old review reducer return: 
+// ...state, 
+// categories: [{...category, 
+//     shops: [{...shop, 
+//         reviews: [...shop.reviews, review]
+//     }]
+// }],
+// loading: false
 // }
