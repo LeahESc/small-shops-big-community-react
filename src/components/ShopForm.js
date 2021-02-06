@@ -47,12 +47,8 @@ class ShopForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        if (this.state.name === '') {
-            alert("You must include a name for this business")
-        } else if (this.state.address === '') {
-            alert("You must include an address for this business")
-        } else if (this.state.website === '') {
-            alert("Please include a website for this business")
+        if (this.state.name === ''|| this.state.description === ''|| this.state.address === '' || this.state.website === '' ) {
+            alert("You must include a name, description, address and website for this business")
         } else { 
         const selectedTags = this.state.tags.filter(tag => tag.checked === true)
             if (selectedTags.length < 1) {
