@@ -47,25 +47,37 @@ class ShopForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        if (this.state.name === '') {
+            alert("You must include a name for this business")
+        } else if (this.state.address === '') {
+            alert("You must include an address for this business")
+        } else if (this.state.website === '') {
+            alert("Please include a website for this business")
+        } else { 
         const selectedTags = this.state.tags.filter(tag => tag.checked === true)
-        const tagObjects = selectedTags.map(tag => tag.id)
-        const newShop = {...this.state, tag_ids: tagObjects}
-        this.props.addShop(newShop, this.props.category)
-        // this.props.addShopTag(selectedTags, newShop, this.props.category)
-        this.setState({
-            name: '',
-            category_id: this.props.category.id,
-            description: '',
-            social_impact: '',
-            address: '',
-            website: '',
-            tags: [
-                {id: 1, name:"BIPOC-OWNED", checked: false},
-                {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
-                {id: 3, name:"LGBTQ+-OWNED", checked: false},
-                {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
-            ],
-        })
+            if (selectedTags.length < 1) {
+                alert("Please select one or more 'tags' for this business")
+            } else { 
+                const tagObjects = selectedTags.map(tag => tag.id)
+                const newShop = {...this.state, tag_ids: tagObjects}
+                this.props.addShop(newShop, this.props.category)
+                // this.props.addShopTag(selectedTags, newShop, this.props.category)
+                this.setState({
+                    name: '',
+                    category_id: this.props.category.id,
+                    description: '',
+                    social_impact: '',
+                    address: '',
+                    website: '',
+                    tags: [
+                        {id: 1, name:"BIPOC-OWNED", checked: false},
+                        {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
+                        {id: 3, name:"LGBTQ+-OWNED", checked: false},
+                        {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
+                    ],
+                })
+            }
+        }
     }
 
     render() {

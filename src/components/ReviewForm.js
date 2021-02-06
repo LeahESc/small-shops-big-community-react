@@ -17,13 +17,16 @@ class ReviewForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        if (this.state.text === '') {
+            alert('Please write a review before hitting submit')
+        } else { 
         const category = this.props.category
         const newReview = {...this.state, shop_id: this.props.shop.id}
         console.log("review obj:", newReview)
         this.props.addReview(newReview, category)
         this.setState({
             text: ''
-        })
+        })}
     }
 
     render() {
