@@ -30,33 +30,33 @@ const ShopMap = ({shop}) =>  {
         lat: 34.0522, 
         lng: -118.2437
     }
-    const geocode = (shop) => {
-        let location = shop.address.split(' ').join('+')
-        let key = process.env.REACT_APP_GOOGLE_API_KEY
-        console.log(location)
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`, {
-            params: {
-                address: shop.address,
-                key: process.env.REACT_APP_GOOGLE_API_KEY
-            }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data.results[0].geometry.location)
-            let locationObject = data.results[0].geometry.location
-            console.log(locationObject)
-            let latitude = parseFloat(locationObject.lat)
-            let longitude = parseFloat(locationObject.lng)
-            let position = {
-                lat: latitude,
-                lng: longitude
-            }
-            console.log(position)
-            return position
-        })
-    }
+    // const geocode = (shop) => {
+    //     let location = shop.address.split(' ').join('+')
+    //     let key = process.env.REACT_APP_GOOGLE_API_KEY
+    //     console.log(location)
+    //     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`, {
+    //         params: {
+    //             address: shop.address,
+    //             key: process.env.REACT_APP_GOOGLE_API_KEY
+    //         }
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //         console.log(data.results[0].geometry.location)
+    //         let locationObject = data.results[0].geometry.location
+    //         console.log(locationObject)
+    //         let latitude = parseFloat(locationObject.lat)
+    //         let longitude = parseFloat(locationObject.lng)
+    //         let position = {
+    //             lat: latitude,
+    //             lng: longitude
+    //         }
+    //         console.log(position)
+    //         return position
+    //     })
+    // }
 
-    const position = geocode(shop)
+    // const position = geocode(shop)
    
 
     return (
