@@ -12,7 +12,7 @@ class CategoryContainer extends Component {
         
         const categoryId = parseInt(this.props.match.params.id)
         const category = this.props.categories.find(c => c.id === categoryId)
-        let queryTerms = this.props.location.search.substring(3).split('&')
+        const queryTerms = this.props.location.search.substring(3).split('&')
     
         const tags = queryTerms.map(term => term.replace(/_/g, " "))
         const shops = category.shops.filter(s => s.tags.some(t => t.name === tags[0] || t.name === tags[1] || t.name === tags[2] || t.name === tags[3]))   
@@ -29,10 +29,10 @@ class CategoryContainer extends Component {
         } else { 
             return (
                 <Grid key={uuid()} columns={3} >
+
                     <Grid.Column key={uuid()} width={1}>
                     </Grid.Column>
                     <Grid.Column  key={uuid()} width={9}>
-                    {/* <div className='category-container'> */}
                         <h4>results found related to your search:</h4> 
                         <Shops key={uuid()} shops={shops} url={this.props.match.url}/>
                     </Grid.Column>
@@ -45,6 +45,7 @@ class CategoryContainer extends Component {
                             <ShopForm key={uuid()} category={category}/>
                         </Grid.Row>
                     </Grid.Column >
+                    
                 </Grid>
             )    
         }

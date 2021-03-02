@@ -88,7 +88,7 @@ class ShopForm extends Component {
                     label='Shop Name'
                     name='name'
                     placeholder=''
-                    id='form-input-first-name'
+                    id='form-input-shop-name'
                     onChange={this.handleChange}
                     value={this.state.name}
                 />

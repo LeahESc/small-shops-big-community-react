@@ -30,6 +30,7 @@ const ShopMap = ({shop}) =>  {
         lat: 34.0522, 
         lng: -118.2437
     }
+    
     // const geocode = (shop) => {
     //     let location = shop.address.split(' ').join('+')
     //     let key = process.env.REACT_APP_GOOGLE_API_KEY
@@ -71,7 +72,7 @@ const ShopMap = ({shop}) =>  {
             
             <Marker 
                 // code i want: position={position}
-                position={defaultLocation}
+                // position={geocode(shop)}
                 icons={{
                     url: shopicon,
                     scaledSize: new window.google.maps.Size(25,25)

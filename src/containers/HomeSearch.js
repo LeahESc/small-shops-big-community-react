@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import '../App.css'
 import TagCheckbox from '../components/TagCheckbox'
+import Suggestions from '../components/Suggestions'
 import { connect } from 'react-redux'
 import { Button, Input, Container } from 'semantic-ui-react'
+import uuid from 'react-uuid'
 
 class HomeSearch extends Component {
     state = {
         search: '',
+        results: [],
         tags: [
             {id: 1, name:"BIPOC-OWNED", checked: false},
             {id: 2, name:"WOMEN/WOMXN-OWNED", checked: false},
@@ -15,11 +18,28 @@ class HomeSearch extends Component {
         ],
     }
 
+    getInfo = () => {
+        let m = this.state.search.substring(0,1)
+        this.setState({
+            results: this.props.categories.filter(c => c.name.startsWith(m))
+        })
+    }
+
     handleChange = (e) => {
         this.setState({
             ...this.state,
             search: e.target.value
-        })    
+        }, () => {
+            if (this.state.search && this.state.search.length >= 2) {
+                this.getInfo()
+            }
+        })
+    }
+
+    handleQueryResultClick = (e) => {
+        const searchResultId = e.target.id;
+        setSelectedCharacter(searchResults[searchResultId]);
+        setQuery([]);
     }
 
     createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
@@ -64,10 +84,19 @@ class HomeSearch extends Component {
                 <Button onClick={this.handleClick} floated="right" color='yellow' padding='15px'>
                     Search
                 </Button>
-                <Input fluid type="text" name="category" onChange={this.handleChange} value={this.state.search} placeholder="try 'plant shops'"/>
+                <Input 
+                    fluid type="text" 
+                    ref={input => this.search = input}
+                    name="category" 
+                    onChange={this.handleChange} 
+                    value={this.state.search} 
+                    placeholder="Search for a type of business..."
+                />
                 <br/>
                 {this.createTagCheckboxes()}
+                <Suggestions results={this.state.results} handleQueryResultClick={this.handleQueryResultClick}/>
             </Container>
+            
         )
     }
 }
