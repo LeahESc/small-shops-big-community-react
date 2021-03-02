@@ -15,6 +15,16 @@
   font-size: '1.85 em';
   }
 
+.search-results {
+  list-style-type: none;
+  text-align: start;
+  margin-inline-start: -2.5em;
+  color: #331be9;
+  background-color: rgb(253, 253, 253);
+  font-size: '6em';
+  font-weight: bold;
+}
+
 
 .shop {
   margin: 20px;

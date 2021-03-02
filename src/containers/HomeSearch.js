@@ -37,9 +37,11 @@ class HomeSearch extends Component {
     }
 
     handleQueryResultClick = (e) => {
-        const searchResultId = e.target.id;
-        setSelectedCharacter(searchResults[searchResultId]);
-        setQuery([]);
+        const searchResultName = e.target.id;
+        this.setState({
+            search: searchResultName,
+            results: []
+        })
     }
 
     createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
@@ -92,9 +94,10 @@ class HomeSearch extends Component {
                     value={this.state.search} 
                     placeholder="Search for a type of business..."
                 />
+                <Suggestions results={this.state.results} handleQueryResultClick={this.handleQueryResultClick} />
                 <br/>
                 {this.createTagCheckboxes()}
-                <Suggestions results={this.state.results} handleQueryResultClick={this.handleQueryResultClick}/>
+                
             </Container>
             
         )
