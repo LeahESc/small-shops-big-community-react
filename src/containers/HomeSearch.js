@@ -18,21 +18,21 @@ class HomeSearch extends Component {
         ],
     }
 
-    getInfo = () => {
-        let m = this.state.search.substring(0,1)
-        this.setState({
-            results: this.props.categories.filter(c => c.name.startsWith(m))
-        })
-    }
-
     handleChange = (e) => {
         this.setState({
             ...this.state,
             search: e.target.value
         }, () => {
-            if (this.state.search && this.state.search.length >= 2) {
-                this.getInfo()
+            if (this.state.search && this.state.search.length >= 1) {
+                this.getResults()
             }
+        })
+    }
+
+    getResults = () => {
+        let m = this.state.search.substring(0,1)
+        this.setState({
+            results: this.props.categories.filter(c => c.name.startsWith(m))
         })
     }
 
@@ -44,7 +44,12 @@ class HomeSearch extends Component {
         })
     }
 
-    createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
+    createTagCheckboxes = () => (
+        this.state.tags.map(tag => (
+        <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> 
+        </div>
+        ))
+    )
     
     handleCheck = (e) => {
         const name = e.target.name;
@@ -88,7 +93,6 @@ class HomeSearch extends Component {
                 </Button>
                 <Input 
                     fluid type="text" 
-                    ref={input => this.search = input}
                     name="category" 
                     onChange={this.handleChange} 
                     value={this.state.search} 

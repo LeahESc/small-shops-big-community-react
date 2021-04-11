@@ -18,6 +18,7 @@ class ShopForm extends Component {
             {id: 3, name:"LGBTQ+-OWNED", checked: false},
             {id: 4, name:"SOCIAL IMPACT COMMITMENT", checked: false}
         ],
+        error_message: ''
     }
 
     createTagCheckboxes = () =>  this.state.tags.map(tag => <div className='tag-checkbox'> <TagCheckbox key={tag.id} value={tag.name} checked={tag.checked} handleCheck={this.handleCheck} /> </div>)
