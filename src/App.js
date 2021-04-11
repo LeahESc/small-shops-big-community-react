@@ -1,24 +1,20 @@
-// import React, { Component } from 'react'
-// import './index.css';
+import React, { useEffect } from 'react'
 import HomeSearch from './containers/HomeSearch'
-import { connect } from 'react-redux'
 import fetchCategories from './actions/categoryActions'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import CategoryContainer from './containers/CategoryContainer'
 import ShopContainer from './containers/ShopContainer'
-import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 
-// class App extends Component {
   
 const App = (props) => {  
-  //  componentDidMount() { 
-  //     this.props.fetchCategories()
-  //     console.log("fetching")
-  //   }
+  const dispatch = useDispatch()
+
 
   useEffect( () => { 
-      props.fetchCategories()
+      // props.fetchCategories()
+      dispatch(fetchCategories())
       console.log("fetching")
   })
   
@@ -27,7 +23,7 @@ const App = (props) => {
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path='/' render={(props) => <HomeSearch {...props} fetchCategories={props.fetchCategories} />} />
+          <Route exact path='/' render={(props) => <HomeSearch {...props} />} />
           <Route exact path="/categories/:id/shops" component={CategoryContainer} />
           <Route exact path="/categories/:id/shops/:id" component={ShopContainer} />        
         </div>
@@ -35,8 +31,10 @@ const App = (props) => {
     )
   }
 
-
-export default connect(null ,{ fetchCategories })(App);
+export default App;
  
 
 
+//  I used to pass fetchCategories={props.fetchCategories}  to HomeSearch component but I no longer need to now that I'm using Redux hooks (I think?)
+//  no longer need to use connect(null ,{ fetchCategories })
+// import { connect } from 'react-redux'
