@@ -8,17 +8,13 @@ import ShopContainer from './containers/ShopContainer'
 import { useDispatch } from 'react-redux'
 
   
-const App = (props) => {  
+const App = () => {  
   const dispatch = useDispatch()
 
-
   useEffect( () => { 
-      // props.fetchCategories()
       dispatch(fetchCategories())
-      console.log("fetching")
   })
-  
-  // render() { 
+
     return (
       <Router>
         <div className="App">
@@ -33,7 +29,6 @@ const App = (props) => {
 
 export default App;
  
-
 
 //  I used to pass fetchCategories={props.fetchCategories}  to HomeSearch component but I no longer need to now that I'm using Redux hooks (I think?)
 //  no longer need to use connect(null ,{ fetchCategories })
