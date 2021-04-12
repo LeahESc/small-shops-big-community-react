@@ -21,25 +21,11 @@ const options = {
     zoomControl: true
 }
 
+let geocodedLocations 
+
 const MapContainer = (props) =>  {
     
-    useEffect(() => {
-        return geocodeLocations = props.shops.map(shop => {
-            let location = shop.address.split(' ').join('+')
-        // let key = process.env.REACT_APP_GOOGLE_API_KEY
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`, {
-            params: {
-            address: shop.address,
-            key: process.env.REACT_APP_GOOGLE_API_KEY
-            }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            return data.results[0].geometry.location
-        })
-        console.log("returned location object:", geocodeLocations)
-        })
-    })
+    
     // const [selectedShop, setSelectedShop] = useState(null)
 
     const {isLoaded, loadError} = useLoadScript({
@@ -53,46 +39,8 @@ const MapContainer = (props) =>  {
     //     lat: 34.0522, 
     //     lng: -118.2437
     // }
-    let geocodedLocations 
-
    
-
-   
-
-    return (
-        <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={10}
-        center={center}
-        options={options}>
-
-        {geocodedLocations.map(shop => {
-            return ( 
-            <Marker 
-                key={uuid()} 
-                position={shop}
-                // onClick={() => setSelectedShop(shop)}
-                icons={{
-                    icon: shopicon,
-                    scaledSize: new window.google.maps.Size(25,25)
-                }}
-            />
-        )})}
-        {/* {selectedShop && ( 
-            <InfoWindow
-                position={defaultLocation}
-                onCloseClick={() => setSelectedShop(null)}  
-            > 
-            <div>Shop Details</div>
-            <h4>{selectedShop.name}</h4>
-            </InfoWindow>
-        )} */}
-        </GoogleMap>  
-    )
-}
-
- 
-// const geocode = (shop) => {
+    // const geocode = (shop) => {
 //     let location = shop.address.split(' ').join('+')
 //     let key = process.env.REACT_APP_GOOGLE_API_KEY
 //     let locationObject
@@ -111,5 +59,40 @@ const MapContainer = (props) =>  {
 //     })
 //     console.log("returned location object:", locationObject)
 // }
+
+    return (
+        <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={10}
+        center={center}
+        options={options}>
+
+        {/* {geocodedLocations.map(shop => {
+            return ( 
+            <Marker 
+                key={uuid()} 
+                position={shop} */}
+                {/* // onClick={() => setSelectedShop(shop)}
+                icons={{
+                    icon: shopicon,
+                    scaledSize: new window.google.maps.Size(25,25)
+                }}
+            />
+        )})} */}
+        {/* {selectedShop && ( 
+            <InfoWindow
+                position={defaultLocation}
+                onCloseClick={() => setSelectedShop(null)}  
+            > 
+            <div>Shop Details</div>
+            <h4>{selectedShop.name}</h4>
+            </InfoWindow>
+        )} */}
+        </GoogleMap>  
+    )
+}
+
+ 
+
 
 export default MapContainer
