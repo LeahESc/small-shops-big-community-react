@@ -3,10 +3,10 @@ import Review from './Review'
 import { Card } from 'semantic-ui-react'
 
  
-const Reviews = () => { 
+const Reviews = (props) => { 
     
-    const reviews = this.props.shop.reviews
-    const shop = this.props.shop
+    const reviews = props.shop.reviews
+    const shop = props.shop
     if (reviews.length <1) {
         return   ''
     } else { 

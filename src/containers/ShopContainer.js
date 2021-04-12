@@ -10,7 +10,7 @@ import uuid from 'react-uuid'
 
 const ShopContainer = (props) => {
         
-    const categories = useSelector(state => state.categories)
+    const categories = useSelector(state => state.categoriesReducer.categories)
     
     const urlArray = props.match.url.split('/')
     const categoryId = parseInt(urlArray[2])
@@ -31,7 +31,16 @@ const ShopContainer = (props) => {
                     <Item key={uuid()} >
                     <br/>
                         <Item.Content key={uuid()} >
-                            <Shop key={uuid()} url={this.props.match.url} category_id={categoryId} name={shop.name} id={shop.id} description={shop.description} social_impact={shop.social_impact} address={shop.address} website={shop.website} tags={shop.tags}/> 
+                            <Shop key={uuid()} 
+                                url={props.match.url} 
+                                category_id={categoryId} 
+                                name={shop.name} 
+                                id={shop.id} 
+                                description={shop.description} 
+                                social_impact={shop.social_impact} 
+                                address={shop.address} 
+                                website={shop.website} 
+                                tags={shop.tags}/> 
                         </Item.Content>
                     </Item>
                 </Item.Group>
