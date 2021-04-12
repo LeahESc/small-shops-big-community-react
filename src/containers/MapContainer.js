@@ -35,8 +35,23 @@ const MapContainer = (props) =>  {
     //     lng: -118.2437
     // }
 
-    
-    
+    useEffect((props) => {
+        let geocodeLocations = props.shops.map(shop => {
+            let location = shop.address.split(' ').join('+')
+        // let key = process.env.REACT_APP_GOOGLE_API_KEY
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${key}`, {
+            params: {
+            address: shop.address,
+            key: process.env.REACT_APP_GOOGLE_API_KEY
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            return data.results[0].geometry.location
+        })
+        console.log("returned location object:", geocodeLocations)
+        })
+    })
 
    
 
@@ -73,7 +88,7 @@ const MapContainer = (props) =>  {
     )
 }
 
-
+ 
 const geocode = (shop) => {
     let location = shop.address.split(' ').join('+')
     let key = process.env.REACT_APP_GOOGLE_API_KEY
